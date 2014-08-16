@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-RssFeederApp::Application.config.secret_token = '903c7e1c1ff0eaf938fb22967bd4ec6fb7417ec72f77015871e6df24bb077245232070e6faa8855cc6d06f9d033a45e79b31cbc88c22e96da25be78de23cccdc'
+RssFeederApp::Application.config.secret_token = '81014680d7e6f97c5e6f6ce496bcf8474d07a908ea09ed244ed268f905812c8ea3e76993a20dcf83053c48710d0eb65a11640c456fbb7cadbec6dfa8e0832556'
