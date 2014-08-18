@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140818151821) do
+ActiveRecord::Schema.define(:version => 20140818153029) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.text     "summary"
+    t.string   "url"
+    t.string   "entry_id"
+    t.datetime "published"
+    t.text     "image"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "subscription_id"
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.string   "url"
@@ -20,6 +32,11 @@ ActiveRecord::Schema.define(:version => 20140818151821) do
     t.datetime "last_updated"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "subscriptions_users", :id => false, :force => true do |t|
+    t.integer "subscription_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
