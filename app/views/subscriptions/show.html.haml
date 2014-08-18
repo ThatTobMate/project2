@@ -1,5 +1,17 @@
 %p#notice= notice
 
+%p
+  %b Url:
+  = @subscription.url
+%p
+  %b Title:
+  = @subscription.title
+%p
+  %b Category:
+  = @subscription.category
+%p
+  %b Last updated:
+  = @subscription.last_updated
 
 = link_to 'Edit', edit_subscription_path(@subscription)
 \|

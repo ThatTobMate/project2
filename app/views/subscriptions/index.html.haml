@@ -2,12 +2,20 @@
 
 %table
   %tr
+    %th Url
+    %th Title
+    %th Category
+    %th Last updated
     %th
     %th
     %th
 
   - @subscriptions.each do |subscription|
     %tr
+      %td= subscription.url
+      %td= subscription.title
+      %td= subscription.category
+      %td= subscription.last_updated
       %td= link_to 'Show', subscription
       %td= link_to 'Edit', edit_subscription_path(subscription)
       %td= link_to 'Destroy', subscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
