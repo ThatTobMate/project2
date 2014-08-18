@@ -1,4 +1,7 @@
 RssFeederApp::Application.routes.draw do
+  resources :subscriptions
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
