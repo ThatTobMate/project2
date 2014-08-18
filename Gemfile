@@ -9,6 +9,8 @@ gem 'rails', '3.2.17'
 
 gem 'haml-rails'
 
+gem 'devise'
+
 group :development do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
