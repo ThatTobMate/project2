@@ -2,7 +2,8 @@
 
 %p
   %b Url:
-  = @subscription.url
+  - @articles.each do |article|
+    %p= article.title
 %p
   %b Title:
   = @subscription.title

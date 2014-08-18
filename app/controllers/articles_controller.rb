@@ -3,6 +3,9 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    # @articles = Article.where(subscription_id:params[:id])
+
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +17,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb
