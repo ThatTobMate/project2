@@ -25,6 +25,8 @@ end
 
 gem 'pg'
 
+gem 'feedjira'
+
 
 
 # Gems used only for assets and not required
