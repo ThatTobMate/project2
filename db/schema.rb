@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20140818122412) do
+ActiveRecord::Schema.define(:version => 20140818171249) do
 
   create_table "subscriptions", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -20,8 +19,6 @@ ActiveRecord::Schema.define(:version => 20140818122412) do
     t.integer  "user_id"
     t.integer  "feed_id"
   end
-
-ActiveRecord::Schema.define(:version => 20140818114751) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -40,11 +37,14 @@ ActiveRecord::Schema.define(:version => 20140818114751) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "image"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
 
 end
