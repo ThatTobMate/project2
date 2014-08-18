@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+
+  before_filter :authenticate_user!, except: :index
   # GET /subscriptions
   # GET /subscriptions.json
   def index
