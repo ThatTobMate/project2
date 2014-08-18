@@ -11,6 +11,10 @@ gem 'haml-rails'
 
 gem 'devise'
 
+gem 'omniauth-twitter'
+
+gem 'omniauth-google-oauth2'
+
 group :development do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
