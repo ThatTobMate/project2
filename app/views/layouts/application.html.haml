@@ -11,30 +11,27 @@
     .container-fluid
       / Brand and toggle get grouped for better mobile display
       .navbar-header
-        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{:href => "#"} Brand
+        - if user_signed_in?
+          Logged in as
+          %b= current_user.email
+          = link_to 'Edit Profile', edit_user_registration_path
+          \|
+          = link_to 'Logout',  destroy_user_session_path, method: :delete
+          \|
+          = link_to 'subscriptions', subscriptions_path
+          \|
+          = link_to 'articles', articles_path
+        - else
+          = link_to 'Sign up', new_user_registration_path
+          \|
+          = link_to 'Login', new_user_session_path
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+      
 
 
   %p.notice= notice
   %p.alert= alert
-  #container
-    .user-nav
-      - if user_signed_in?
-        Logged in as
-        %b= current_user.email
-        = link_to 'Edit Profile', edit_user_registration_path
-        \|
-        = link_to 'Logout',  destroy_user_session_path, method: :delete
-      - else
-        = link_to 'Sign up', new_user_registration_path
-        \|
-        = link_to 'Login', new_user_session_path
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
 
 
 
