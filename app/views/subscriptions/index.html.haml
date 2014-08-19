@@ -1,23 +1,14 @@
 %h1 Listing subscriptions
 
-%table
-  %tr
-    %th feed_title
-    %th user_name
-    %th category_name
-    %th
-    %th
-    %th
-
-  - @subscriptions.each do |subscription|
-    %tr
-      %td= subscription.feed.title
-      %td= subscription.user.name
-      %td= subscription.category.name
-      %td= link_to 'Show', subscription
-      %td= link_to 'Edit', edit_subscription_path(subscription)
-      %td= link_to 'Destroy', subscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+- @subscriptions_list.each do | category, subscriptions |
+  %p
+    = category
+  %ul
+    - subscriptions.each do | subscription |
+      %li
+        = subscription.feed.title
+        = link_to 'Show', subscription
+        = link_to 'Edit', edit_subscription_path(subscription)
+        = link_to 'Destroy', subscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
-
 = link_to 'New subscription', new_subscription_path
