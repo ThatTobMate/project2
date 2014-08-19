@@ -4,34 +4,26 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all
-
+    @subscriptions = Subscription.where(user_id: current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subscriptions }
     end
   end
 
-  # GET /subscriptions/1
-  # GET /subscriptions/1.json
+#   # GET /subscriptions/1
+#   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
  
-
-
-
-
-
     respond_to do |format|
       format.html  # show.html.erb
       format.json { render json: @subscription }
-    end
-
-
   end
+end
 
-  # GET /subscriptions/new
-  # GET /subscriptions/new.json
+#   # GET /subscriptions/new
+#   # GET /subscriptions/new.json
   def new
     @subscription = Subscription.new
 
@@ -41,13 +33,13 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # GET /subscriptions/1/edit
+#   # GET /subscriptions/1/edit
   def edit
     @subscription = Subscription.find(params[:id])
   end
 
-  # POST /subscriptions
-  # POST /subscriptions.json
+#   # POST /subscriptions
+#   # POST /subscriptions.json
   def create
     @subscription = Subscription.new(params[:subscription])
 
@@ -62,8 +54,8 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # PUT /subscriptions/1
-  # PUT /subscriptions/1.json
+#   # PUT /subscriptions/1
+#   # PUT /subscriptions/1.json
   def update
     @subscription = Subscription.find(params[:id])
 
@@ -78,8 +70,8 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # DELETE /subscriptions/1
-  # DELETE /subscriptions/1.json
+#   # DELETE /subscriptions/1
+#   # DELETE /subscriptions/1.json
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy

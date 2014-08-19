@@ -5,7 +5,9 @@ RssFeederApp::Application.routes.draw do
 
   resources :feeds
 
+  resources :subscriptions
 
+  
   devise_for :users
 
 
