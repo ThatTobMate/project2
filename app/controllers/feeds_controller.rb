@@ -6,6 +6,7 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
     @feeds.each { |a| Article.update_from_feed(a.url,a.id)} 
+    raise
 
     respond_to do |format|
       format.html # index.html.erb
