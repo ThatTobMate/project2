@@ -9,6 +9,7 @@
 
 User.delete_all
 Feed.delete_all
+Category.delete_all
 
 c1 = Category.create!(name: "News")
 c2 = Category.create!(name: "Sport")
