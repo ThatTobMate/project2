@@ -11,14 +11,6 @@
     .container-fluid
       / Brand and toggle get grouped for better mobile display
       .navbar-header
-        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand{:href => "#"} Brand
-
-
 
       %p.notice= notice
       %p.alert= alert
@@ -30,12 +22,17 @@
         = link_to "Edit profile", edit_user_registration_path
         %br/
         = link_to "Logout", destroy_user_session_path, method: :delete
+        \|
+        = link_to 'feeds', feeds_path
+        \|
+        = link_to 'articles', articles_path
       - else
         = link_to "Sign up", new_user_registration_path
         %br/
         = link_to "Login", new_user_session_path
         = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)
         = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter)
+
 
 
 

@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+
+  before_filter :authenticate_user!, except: :index
   # GET /subscriptions
   # GET /subscriptions.json
   def index
@@ -14,11 +16,18 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
+ 
+
+
+
+
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html  # show.html.erb
       format.json { render json: @subscription }
     end
+
+
   end
 
   # GET /subscriptions/new

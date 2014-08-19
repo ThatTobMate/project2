@@ -1,6 +1,9 @@
 RssFeederApp::Application.routes.draw do
 
-  resources :subscriptions
+  resources :articles
+
+
+  resources :feeds
 
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }

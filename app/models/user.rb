@@ -1,14 +1,18 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :posts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2]
 
+  has_many :subscriptions
+  has_many :feeds, through: :subscriptions
+  has_many :articles, through: :feeds
+  has_many :articles_users
         
 
   # Setup accessible (or protected) attributes for your model
- attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :image
+
+ attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :image, :feed_ids
   # attr_accessible :title, :body
 
 
@@ -50,7 +54,7 @@ class User < ActiveRecord::Base
         user.image = auth.info.image
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
-        user.skip_confirmation!
+        #user.skip_confirmation!
       end
     end
   end
@@ -62,7 +66,7 @@ class User < ActiveRecord::Base
         user.name = auth.info.name
         user.email = auth.info.email
         user.image = auth.info.image
-        user.skip_confirmation!
+        #user.skip_confirmation!
       end
     end
   end
