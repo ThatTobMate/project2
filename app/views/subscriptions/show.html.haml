@@ -1,19 +1,17 @@
 %p#notice= notice
 
 %p
-  %b Url:
   - @articles.each do |article|
-    %p= article.title
-%p
-  %b Title:
-  = @subscription.title
-%p
-  %b Category:
-  = @subscription.category
-%p
-  %b Last updated:
-  = @subscription.last_updated
+    = link_to article.title, article.url
+    %b Last updated:
+    = article.published
+    %b img:
+    =image_tag article.image
+    %br
+
+
 
 = link_to 'Edit', edit_subscription_path(@subscription)
 \|
 = link_to 'Back', subscriptions_path
+

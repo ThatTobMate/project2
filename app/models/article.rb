@@ -28,6 +28,7 @@ class Article < ActiveRecord::Base
           :url          => entry.url,
           :published => entry.published,
           :entry_id         => entry.id,
+          :image  =>  entry.image,
           :subscription_id  => @subscription_id
         )
       end
