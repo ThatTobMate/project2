@@ -3,7 +3,7 @@ RssFeederApp::Application.routes.draw do
   resources :articles
 
 
-  resources :subscriptions
+  resources :feeds
 
 
   devise_for :users

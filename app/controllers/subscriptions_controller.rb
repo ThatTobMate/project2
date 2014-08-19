@@ -16,8 +16,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
-    @articles = @subscription.articles
-    Article.update_from_feed(@subscription.url, @subscription.id)
+ 
 
 
 

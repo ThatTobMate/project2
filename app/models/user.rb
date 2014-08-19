@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :timeoutable, confirm_within: 10.minutes
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :subscription_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :feed_ids
   # attr_accessible :title, :body
 
-  has_and_belongs_to_many :subscriptions
+  has_many :subscriptions
+  has_many :feeds, through: :subscriptions
+  has_many :articles, through: :feeds
+  has_many :articles_users
 end

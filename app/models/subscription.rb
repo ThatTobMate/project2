@@ -1,7 +1,6 @@
 class Subscription < ActiveRecord::Base
-  attr_accessible :category, :last_updated, :title, :url, :user_ids
+  attr_accessible :feed_id, :user_id
 
-
-  has_and_belongs_to_many :users
-  has_many :articles
+  belongs_to :user
+  belongs_to :feed
 end

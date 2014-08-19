@@ -8,15 +8,15 @@
 
 
 User.delete_all
-Subscription.delete_all
+Feed.delete_all
 
 
-s1 = Subscription.create!(url:"http://feeds.bbci.co.uk/news/world/rss.xml",title:"bbc",category:"news")
-s2 = Subscription.create!(url:"http://www.utah.gov/whatsnew/rss.xml",title:"utahnews",category:"news")
+f1 = Feed.create!(url:"http://feeds.bbci.co.uk/news/world/rss.xml",title:"bbc",category:"news")
+f2 = Feed.create!(url:"http://www.utah.gov/whatsnew/rss.xml",title:"utahnews",category:"news")
 
-u1 = User.create!(email:"madeupname@gmail.com",password:"12341234",subscription_ids:[s1.id])
-u2 = User.create!(email: "user@user.com", password: "password",subscription_ids:[s1.id,s2.id])
-u3 = User.create!(email: "admin@admin.com", password: "password",subscription_ids:[s2.id])
+u1 = User.create!(email:"madeupname@gmail.com",password:"12341234",feed_ids:[f1.id])
+u2 = User.create!(email: "user@user.com", password: "password",feed_ids:[f1.id,f2.id])
+u3 = User.create!(email: "admin@admin.com", password: "password",feed_ids:[f2.id])
 
 
 

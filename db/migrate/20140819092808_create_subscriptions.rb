@@ -1,10 +1,8 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def change
     create_table :subscriptions do |t|
-      t.string :url
-      t.string :title
-      t.string :category
-      t.datetime :last_updated
+      t.integer :feed_id
+      t.integer :user_id
 
       t.timestamps
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140818153029) do
+ActiveRecord::Schema.define(:version => 20140819111553) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,12 +20,22 @@ ActiveRecord::Schema.define(:version => 20140818153029) do
     t.string   "entry_id"
     t.datetime "published"
     t.text     "image"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "subscription_id"
+    t.integer  "feed_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "subscriptions", :force => true do |t|
+  create_table "articles_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.boolean  "is_read"
+    t.boolean  "is_bookmarked"
+    t.boolean  "is_favourite"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "feeds", :force => true do |t|
     t.string   "url"
     t.string   "title"
     t.string   "category"
@@ -34,9 +44,11 @@ ActiveRecord::Schema.define(:version => 20140818153029) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "subscriptions_users", :id => false, :force => true do |t|
-    t.integer "subscription_id"
-    t.integer "user_id"
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "feed_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

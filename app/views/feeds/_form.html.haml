@@ -1,9 +1,9 @@
-= form_for @subscription do |f|
-  - if @subscription.errors.any?
+= form_for @feed do |f|
+  - if @feed.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@subscription.errors.count, "error")} prohibited this subscription from being saved:"
+      %h2= "#{pluralize(@feed.errors.count, "error")} prohibited this feed from being saved:"
       %ul
-        - @subscription.errors.full_messages.each do |msg|
+        - @feed.errors.full_messages.each do |msg|
           %li= msg
 
   .field

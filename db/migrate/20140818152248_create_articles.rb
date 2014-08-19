@@ -7,6 +7,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :entry_id
       t.datetime :published
       t.text :image
+      t.integer :feed_id
 
       t.timestamps
     end

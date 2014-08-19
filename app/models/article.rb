@@ -1,9 +1,9 @@
 class Article < ActiveRecord::Base
-  attr_accessible :entry_id, :image, :published, :summary, :title, :url, :subscription_id
+  attr_accessible :entry_id, :image, :published, :summary, :title, :url, :feed_id
 
   def self.update_from_feed(feed_url,id)
     feed = Feedjira::Feed.fetch_and_parse(feed_url)
-    @subscription_id = id
+    @feed_id = id
     add_entries(feed.entries)
   end
   
@@ -29,11 +29,13 @@ class Article < ActiveRecord::Base
           :published => entry.published,
           :entry_id         => entry.id,
           :image  =>  entry.image,
-          :subscription_id  => @subscription_id
+          :feed_id  => @feed_id
         )
       end
     end
   end
 
-  belongs_to :subscription
+
+  belongs_to :feed
+  has_many :articles_users
 end
