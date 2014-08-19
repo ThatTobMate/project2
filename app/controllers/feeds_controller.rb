@@ -18,7 +18,7 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @articles = @feed.articles
     Article.update_from_feed(@feed.url, @feed.id)
-    raise
+
 
 
 
