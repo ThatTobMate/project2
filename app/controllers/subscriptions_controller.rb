@@ -42,6 +42,8 @@ end
 #   # POST /subscriptions.json
   def create
     @subscription = Subscription.new(params[:subscription])
+    category = @subscription.feed.category_id
+    @subscription.update_attributes(category_id: category)
 
     respond_to do |format|
       if @subscription.save

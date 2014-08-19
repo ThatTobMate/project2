@@ -2,16 +2,18 @@
 
 %table
   %tr
-    %th feed_id
-    %th user_id
+    %th feed_title
+    %th user_name
+    %th category_name
     %th
     %th
     %th
 
   - @subscriptions.each do |subscription|
     %tr
-      %td= subscription.feed_id
-      %td= subscription.user_id
+      %td= subscription.feed.title
+      %td= subscription.user.name
+      %td= subscription.category.name
       %td= link_to 'Show', subscription
       %td= link_to 'Edit', edit_subscription_path(subscription)
       %td= link_to 'Destroy', subscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
