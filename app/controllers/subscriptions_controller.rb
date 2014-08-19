@@ -4,7 +4,8 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.where(user_id: current_user.id)
+    @yoursubscriptions = Subscription.where(user_id: current_user.id)
+    @subscriptions = Subscription.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subscriptions }
@@ -15,7 +16,7 @@ class SubscriptionsController < ApplicationController
 #   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
- 
+
     respond_to do |format|
       format.html  # show.html.erb
       format.json { render json: @subscription }
@@ -28,6 +29,7 @@ end
     @subscription = Subscription.new
 
     respond_to do |format|
+
       format.html # new.html.erb
       format.json { render json: @subscription }
     end
@@ -43,11 +45,14 @@ end
   def create
     @subscription = Subscription.new(params[:subscription])
 
+
     respond_to do |format|
       if @subscription.save
+        binding.pry
         format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
       else
+        binding.pry
         format.html { render action: "new" }
         format.json { render json: @subscription.errors, status: :unprocessable_entity }
       end
