@@ -232,6 +232,8 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :google_oauth2, ENV['GOOGLE_AUTH_CLIENT_ID'], ENV['GOOGLE_AUTH_CLIENT_SECRET'], scope: "email, profile", client_options:{ image_aspect_ratio: "square", image_size: 30 }
 
+  config.omniauth :twitter, ENV['TWITTER_AUTH_CLIENT_ID'], ENV['TWITTER_AUTH_CLIENT_SECRET']
+
 
 
   # ==> Warden configuration
