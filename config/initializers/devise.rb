@@ -4,13 +4,13 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = '2665bf9df77807a1bef84dd0b0c49cdd359de8e34a867c00d1e05184e22c8a2275f79d7f4d3420fc360e7a088b977691e30188220db718c88208fddc0e028729'
+  config.secret_key = '17a308c8be1c60c84b332ebb3ac33906299fd27d2af04c601551c57d4f9375e3f83d41fedb9ec3e89a8848c90ed910e356378595d0b89809cddc238951ff22c9'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'Tobias@hale.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '9c29caae3a687a8b3a567dc31812e14b994f514f2e814ba07afc9e53e6ce1ba9a619540a15a09c7c682675cb844f28378eef09a83c7a7b1916def3a432c86c31'
+  # config.pepper = '90f3eed2f0136f358002467a3df462e0112079f7085581d45e11c6296f381d22377a72f68fc025dd772e5879d9be3851f6fd83e676878dc319ad045b7e55bfba'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -126,7 +126,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 5.minutes
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
@@ -147,7 +147,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 4.minutes
 
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
@@ -230,6 +230,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :google_oauth2, ENV['GOOGLE_AUTH_CLIENT_ID'], ENV['GOOGLE_AUTH_CLIENT_SECRET'], scope: "email, profile", client_options:{ image_aspect_ratio: "square", image_size: 30 }
+
+  config.omniauth :twitter, ENV['TWITTER_AUTH_CLIENT_ID'], ENV['TWITTER_AUTH_CLIENT_SECRET']
+
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
