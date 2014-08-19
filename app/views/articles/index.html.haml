@@ -23,7 +23,8 @@
       %td= article.image
       %td= article.feed_id
       %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
+      .follow
+      %td= link_to 'follow', edit_article_path(article)
       %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

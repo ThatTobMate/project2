@@ -19,11 +19,6 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @articles = @feed.articles.order()
 
-
-
-
-
-
     respond_to do |format|
       format.html  # show.html.erb
       format.json { render json: @feed }

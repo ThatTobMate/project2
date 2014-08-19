@@ -9,7 +9,7 @@
     %th
 
   - @subscriptions.each do |subscription|
-    %tr
+    %tr.entries
       %td= subscription.feed_id
       %td= subscription.user_id
       %td= link_to 'Show', subscription
