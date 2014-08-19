@@ -15,6 +15,8 @@ gem 'omniauth-google-oauth2'
 
 gem 'omniauth-twitter'
 
+gem 'kaminari'
+
 group :development do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
