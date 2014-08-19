@@ -4,7 +4,8 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.where(user_id: current_user.id)
+    @yoursubscriptions = Subscription.where(user_id: current_user.id)
+    @subscriptions = Subscription.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subscriptions }
@@ -15,7 +16,7 @@ class SubscriptionsController < ApplicationController
 #   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
- 
+
     respond_to do |format|
       format.html  # show.html.erb
       format.json { render json: @subscription }

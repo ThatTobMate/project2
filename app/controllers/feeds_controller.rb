@@ -7,6 +7,7 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
     @feeds.each { |a| Article.update_from_feed(a.url,a.id)} 
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feeds }

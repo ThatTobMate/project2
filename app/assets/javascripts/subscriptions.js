@@ -1,4 +1,3 @@
-
 function request(method, url, data){
   return $.ajax({
     method: method,
@@ -14,20 +13,23 @@ function appendNewTask(data){
       '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
       '<label>'+ data.title +'</label>'+
       '<button class="destroy" data-id="'+ data.id +'"></button>'+
-    '</li>').prependTo("#todo-list")
+    '</li>').prependTo("#entries")
 }
 
 //POST /subscriptions (corresponds to create)
 function createTask(){
-  alert('warning');
   event.preventDefault();
-
+  var userid = 116;
+  var feedid = 24;
   request("POST", "/subscriptions", {
-    task:{
-      feed_id: $("#entries").val()
-    },
+    subscription:{
+      feed_id: feedid,
+      user_id: userid
+    }
   }).success(function(data){
     $('#entries').val("")
+    alert('warning');
+    console.log(data)
     appendNewTask(data)
   })
 }
