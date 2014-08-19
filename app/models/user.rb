@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
       user.image = auth.info.image
       user.save
       user
+
     else
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
@@ -47,27 +48,18 @@ class User < ActiveRecord::Base
       user.save
       user
     else
+      
       where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.name = auth.info.name
         user.image = auth.info.image
-        user.email = auth.info.email
+        user.email = twitter_email
         user.password = Devise.friendly_token[0,20]
         #user.skip_confirmation!
+        
       end
-    end
-  end
-
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if auth = session["devise.google_data"]
-        user.name = auth.info.name
-        user.email = auth.info.email
-        user.image = auth.info.image
-        #user.skip_confirmation!
-      end
+      
     end
   end
 end
