@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    @feeds = Feed.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb

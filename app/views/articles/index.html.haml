@@ -1,6 +1,5 @@
 %h1 Listing articles
 
-= paginate @articles
 
 %table
   %tr
@@ -30,4 +29,5 @@
 
 %br
 
-= link_to 'New Article', new_article_path
+= paginate @articles
+
