@@ -20,7 +20,7 @@
       %p.notice= notice
       %p.alert= alert
       - if user_signed_in?
-        =image_tag current_user.image
+        =image_tag current_user.image, :class =>"img-circle"
         %br/
         Welcome #{current_user.name.split[0]}
         %br/
@@ -37,8 +37,12 @@
         = link_to "Sign up", new_user_registration_path
         %br/
         = link_to "Login", new_user_session_path
-        = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)
-        = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter)
+        = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-primary btn-lg active"
+        = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter), :class => "btn btn-primary btn-lg active"
+
+  .ransack
+    = form_tag('/search', method: :get) do
+      = text_field_tag :q, nil
 
 #wrapper
   / Sidebar

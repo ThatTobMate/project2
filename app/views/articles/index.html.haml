@@ -22,7 +22,7 @@
       %td= article.entry_id
       %td= article.published
       %td= article.image
-      %td= article.feed.title
+
       %td= link_to 'Show', article
       %td.bookmark= link_to 'bookmark', new_bookmark_path, :data => {:id => article.id}
       %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -30,5 +30,5 @@
 %br
 
 #paginator
-  = paginate @articles
+  = paginate @articles_pagination
 

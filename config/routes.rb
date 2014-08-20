@@ -13,6 +13,8 @@ RssFeederApp::Application.routes.draw do
 
   resources :subscriptions
 
+  get '/search', to: "search#index"
+
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
