@@ -22,7 +22,7 @@
       %td= article.entry_id
       %td= article.published
       %td= article.image
-      %td= article.feed.title
+
       %td= link_to 'Show', article
       .follow
       %td= link_to 'follow', edit_article_path(article)
@@ -31,5 +31,5 @@
 %br
 
 #paginator
-  = paginate @articles
+  = paginate @articles_pagination
 
