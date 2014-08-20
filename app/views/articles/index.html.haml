@@ -25,7 +25,7 @@
       %td= article.feed.title
       %td= link_to 'Show', article
       .follow
-      %td= link_to 'follow', edit_article_path(article)
+      %td= link_to 'bookmark', new_bookmark_path, :data => {:id => article.id}
       %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
