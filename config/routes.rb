@@ -13,7 +13,11 @@ RssFeederApp::Application.routes.draw do
 
   resources :subscriptions
 
+
   get "/signup", to: "users#new",         as: "signup"
+
+
+  get '/search', to: "search#index"
 
 
 

@@ -2,8 +2,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.page(params[:page]).per(10)
-    @bookmarks = ArticlesUser.where(is_bookmarked:true)
+
+    @articles_pagination = Article.page(params[:page]).per(10)
+
 
     # @articles = Article.where(subscription_id:params[:id])
 
