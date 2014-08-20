@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
 
     @subscriptions = Subscription.where(user_id: current_user.id)
     @subscriptions_list = @subscriptions.group_by { |t| t.category.name }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subscriptions }
@@ -45,17 +46,18 @@ end
 #   # POST /subscriptions.json
   def create
     @subscription = Subscription.new(params[:subscription])
+    @subscription.user_id = current_user.id
     category = @subscription.feed.category_id
     @subscription.update_attributes(category_id: category)
 
 
     respond_to do |format|
       if @subscription.save
-        binding.pry
+
         format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
       else
-        binding.pry
+
         format.html { render action: "new" }
         format.json { render json: @subscription.errors, status: :unprocessable_entity }
       end
