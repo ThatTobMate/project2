@@ -4,17 +4,20 @@ function request(method, url, data){
     method: method,
     url: url,
     dataType: "json",
-    data: data,
+    data: data
   })
 }
 
-// add a <li> to the list #todo-list
+// add a <li> to the list #sidebar subscriptions
 function appendNewSubscription(data){
-  // $('<li class="'+ (data.done == true ? "completed" : "") + '">'+
-  //     '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
-  //     '<label>'+ data.title +'</label>'+
-  //     '<button class="destroy" data-id="'+ data.id +'"></button>'+
-  //   '</li>').prependTo("#entries")
+  debugger;
+  $('<li>' +
+  '<a href="/feeds/' +
+  data.feed_id +
+  '">'+
+  data.feed_title +
+  '</a>'+
+  '</li>').appendTo("#category")
 }
 
 //POST /subscriptions (corresponds to create)
@@ -22,11 +25,14 @@ function createSubscription(){
   event.preventDefault();
   $this = $(this)
   subscriptionId = $this.data("id");
+  subscriptionTitle = $this.data("name");
   request("POST", "/subscriptions", {
     subscription:{
-      feed_id:subscriptionId
+      feed_id: subscriptionId, feed_title: subscriptionTitle
     }
   }).success(function(data){
+
+    debugger 
     $('#entries').val("");
     appendNewSubscription(data)
   })
