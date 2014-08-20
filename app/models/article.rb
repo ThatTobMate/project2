@@ -37,5 +37,5 @@ class Article < ActiveRecord::Base
 
 
   belongs_to :feed
-  has_many :articles_users
+  has_many :articles_users,  dependent: :destroy
 end

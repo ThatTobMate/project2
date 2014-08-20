@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
   %body
   
 
@@ -67,6 +68,7 @@
         / /.navbar-collapse
       / /.container-fluid
 
+
     %p.notice= notice
     %p.alert= alert
     - if user_signed_in?
@@ -84,8 +86,17 @@
       \|
       = link_to 'articles', articles_path
 
+#wrapper
+  / Sidebar
+  #sidebar-wrapper
 
+    - @subscriptions_list.each do | category, subs |
+      %p
+        = category
+      %ul
+        - subs.each do | sub |
+          %li
+            = link_to sub.feed.title, feed_path(sub.feed_id)
 
+  = yield
 
-
-    = yield

@@ -9,7 +9,7 @@ function request(method, url, data){
 }
 
 // add a <li> to the list #todo-list
-function appendNewSubscription(data){
+function appendNewBookmark(data){
   // $('<li class="'+ (data.done == true ? "completed" : "") + '">'+
   //     '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
   //     '<label>'+ data.title +'</label>'+
@@ -17,32 +17,36 @@ function appendNewSubscription(data){
   //   '</li>').prependTo("#entries")
 }
 
-//POST /subscriptions (corresponds to create)
-function createSubscription(){
+//POST /Bookmarks (corresponds to create)
+function createBookmark(){
+  alert('warning');
   event.preventDefault();
   $this = $(this)
-  subscriptionId = $this.data("id");
-  request("POST", "/subscriptions", {
-    subscription:{
-      feed_id:subscriptionId
+  bookmarkId = $this.data("id");
+  request("POST", "/articles_users", {
+    article_user:{
+      article_id:bookmarkId
     }
   }).success(function(data){
     $('#entries').val("");
-    appendNewSubscription(data)
+    debugger;
+    alert('warning');
+    console.log(data)
+    appendNewBookmark(data)
   })
 }
 
-// DELETE /subscriptions/:id (corresponds to destroy)
-function destroySubscription(){
+// DELETE /Bookmarks/:id (corresponds to destroy)
+function destroyBookmark(){
   $this = $(this)
-  subscriptionId = $this.data("id");
-  request("DELETE", "/subscriptions/"+subscriptionId, null).success(function(data){
+  bookmarkId = $this.data("id");
+  request("DELETE", "/articles_users/"+bookmarkId, null).success(function(data){
       $this.parent().remove()
   })
 }
 
 
 $(function(){
-  $('.subscribe a').on('click', createSubscription);
-  $('#todo-list').on('click', ".destroy", destroySubscription);
+  $('.bookmark a').on('click', createBookmark);
+  $('#todo-list').on('click', ".destroy", destroyBookmark);
 })
