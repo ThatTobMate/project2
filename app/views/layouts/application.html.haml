@@ -35,6 +35,8 @@
         = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)
         = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter)
 
+  = form_tag ('/articles'), method: :get do
+    = text_field_tag :q, nil
 
 
 
