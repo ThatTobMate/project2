@@ -5,6 +5,11 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    / Bootstrap Core CSS
+    %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom CSS
+    %link{:href => "css/simple-sidebar.css", :rel => "stylesheet"}/
+
   %body
 
   %nav.navbar.navbar-default{:role => "navigation"}
@@ -35,9 +40,17 @@
         = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2)
         = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter)
 
+#wrapper
+  / Sidebar
+  #sidebar-wrapper
 
-
-
+    - @subscriptions_list.each do | category, subs |
+      %p
+        = category
+      %ul
+        - subs.each do | sub |
+          %li
+            = link_to sub.feed.title, feed_path(sub.feed_id)
 
   = yield
 
