@@ -1,4 +1,5 @@
 function request(method, url, data){
+
   return $.ajax({
     method: method,
     url: url,
@@ -8,62 +9,52 @@ function request(method, url, data){
 }
 
 // add a <li> to the list #todo-list
-function appendNewTask(data){
-  $('<li class="'+ (data.done == true ? "completed" : "") + '">'+
-      '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
-      '<label>'+ data.title +'</label>'+
-      '<button class="destroy" data-id="'+ data.id +'"></button>'+
-    '</li>').prependTo("#entries")
+function appendNewSubscription(data){
+  // $('<li class="'+ (data.done == true ? "completed" : "") + '">'+
+  //     '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
+  //     '<label>'+ data.title +'</label>'+
+  //     '<button class="destroy" data-id="'+ data.id +'"></button>'+
+  //   '</li>').prependTo("#entries")
 }
 
 //POST /subscriptions (corresponds to create)
-function createTask(){
+function createSubscription(){
   event.preventDefault();
-var data = {}
+  $this = $(this)
+  subscriptionId = $this.data("id");
   request("POST", "/subscriptions", {
     subscription:{
-      data
-      // user_id: userid
+      feed_id:subscriptionId
     }
   }).success(function(data){
-    $('#entries').val("")
+    $('#entries').val("");
     alert('warning');
     console.log(data)
-    appendNewTask(data)
+    appendNewSubscription(data)
   })
 }
 
 // DELETE /subscriptions/:id (corresponds to destroy)
-function destroyTask(){
+function destroySubscription(){
   $this = $(this)
-  taskId = $this.data("id");
-  request("DELETE", "/subscriptions/"+taskId, null).success(function(data){
+  subscriptionId = $this.data("id");
+  request("DELETE", "/subscriptions/"+subscriptionId, null).success(function(data){
       $this.parent().remove()
   })
 }
 
-// PUT /subscriptions/:id (only column done) (corresponds to update)
-function changeTaskStatus(){
-  $this = $(this)
-  taskId = $this.data("id");
-  isDone = $this.is(":checked")
-  request("PUT", "/subscriptions/"+taskId, {task:{done: isDone}}).success(function(){
-    $this.parent().toggleClass("completed")
-  })
-}
 
 // GET /subscriptions (corresponds to index)
-function getTasks(){
+function getSubscriptions(){
   request("GET", "/subscriptions", null).success(function(data){
-      $.each(data, function(i, task){
-        appendNewTask(task)
+      $.each(data, function(i, subscription){
+        appendNewSubscription(subscription)
       })
   })
 }
 
 $(function(){
-  $('.subscribe a').on('click', createTask);
-  $('#todo-list').on('click', ".destroy", destroyTask);
-  $("#todo-list").on("change", ".toggle" , changeTaskStatus);
-  getTasks()
+  $('.subscribe a').on('click', createSubscription);
+  $('#todo-list').on('click', ".destroy", destroySubscription);
+  getSubscriptions()
 })

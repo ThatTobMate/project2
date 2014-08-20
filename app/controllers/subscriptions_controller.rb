@@ -45,8 +45,11 @@ end
   def create
     @subscription = Subscription.new(params[:subscription])
     @subscription.user_id = current_user.id
-    @subscription.feed_id = Subscription.find(params[:feed_id])
-    raise
+    binding.pry
+    feed_id = @subscription.feed.id
+    @subscription.update_attributes(feed_id:feed_id)
+
+
  
 
 
