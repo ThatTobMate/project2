@@ -1,0 +1,221 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title Landing Page Template for Bootstrap
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} Bootstrap Landing
+      / Collect the nav links, forms, and other content for toggling
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a.scroll-link{"data-id" => "home", :href => "#"} Home
+          %li
+            %a.scroll-link{"data-id" => "about", :href => "#"} About Us
+          %li
+            %a.scroll-link{"data-id" => "services", :href => "#"} Services
+          %li
+            %a.scroll-link{"data-id" => "contact", :href => "#"} Contact Us
+          %li
+            %a#loginpopup{:style => "cursor:pointer;"} Login / Signup
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Welcome
+              %strong Guest
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} My Account
+              %li
+                %a{:href => "#"} Transactions
+              %li.divider
+              %li
+                %a{:href => "#"} Logout
+        /
+          <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+      / /.navbar-collapse
+    / Code for Login / Signup Popup
+    / Modal Log in
+    #login.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel1", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:style => "margin-top: 150px;"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+            %h4#myModalLabel1.modal-title Login to Landing
+          #login_details.modal-body
+            %span Already have an account?
+            *
+            %span{:style => "font-weight:bold;"} Your Email
+            %br/
+            %input{:name => "login_email", :placeholder => "example@gmail.com", :type => "text"}/
+            %br/
+            *
+            %span{:style => "font-weight:bold;"} Password
+            %br/
+            %input{:name => "login_password", :placeholder => "Password", :type => "password"}/
+            %br/
+          .modal-footer
+            %input.btn.btn-success{:style => "float: left", :type => "button", :value => "Log In"}/
+            %span.fp-link
+              %a{:href => "#"} Forgot Password?
+            %span Not a member yet?
+            %span#signup-link.text-info{:style => "cursor:pointer;"} Sign Up!
+        / /.modal-content
+      / /.modal-dialog
+    / /.modal
+    / Modal Login Ends
+    / Modal Sign-up Starts
+    #signup.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel2", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:style => "margin-top: 100px;"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+            %h4#myModalLabel2.modal-title Sign Up on Landing
+          #signup_details.modal-body
+            %span Full Name
+            %input{:name => "register_name", :placeholder => "Full Name", :type => "text"}/
+            *
+            %span Email
+            %input{:name => "register_email", :placeholder => "example@gmail.com", :type => "text"}/
+            *
+            %span Password
+            %input{:name => "register_password", :placeholder => "Password", :type => "password"}/
+            *
+            %span Password Re-Type
+            %input{:name => "re_register_password", :placeholder => "Re-type Password", :type => "password"}/
+          .modal-footer
+            %input.btn.btn-success{:style => "float: left", :type => "button", :value => "Sign Me Up"}/
+            %span     Already a member?
+            %span#login-link.text-info{:style => "cursor:pointer;"} Login now
+        / /.modal-content
+      / /.modal-dialog
+    / /.modal
+    / Modal Sign up ends!
+    / End code for Login / Signup Popup
+    #home.intro-header
+      #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+        / Indicators
+        %ol.carousel-indicators
+          %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+          %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+          %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+        / Wrapper for slides
+        .carousel-inner
+          .item.active
+            %img{:alt => "First Image", :src => "img/img1.jpg"}/
+            .carousel-caption
+              First Image
+          .item
+            %img{:alt => "Second Image", :src => "img/img2.jpg"}/
+            .carousel-caption
+              Second Image
+          .item
+            %img{:alt => "Third Image", :src => "img/img3.jpg"}/
+            .carousel-caption
+              Third Image
+        / Controls
+        %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+          %span.glyphicon.glyphicon-chevron-left
+        %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+          %span.glyphicon.glyphicon-chevron-right
+      / /.container
+    / /.intro-header
+    #about.content-section-a
+      .container
+        .row
+          .col-lg-5.col-sm-6
+            .clearfix
+            %h2.section-heading
+              About Us
+            %p.lead
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et commodo neque.
+              = succeed "," do
+                %a{:href => "#"} Fusce venenatis
+              %a{:href => "#"} Curabitur
+              id dolor eu neque pellentesque faucibus quis vel tellus.
+              %a{:href => "#"} Etiam in ullamcorper
+              ligula. Praesent mattis dui in auctor scelerisque. Nulla facilisi. Morbi urna orci, aliquam ut nisi ut, imperdiet volutpat felis. Praesent a porttitor sapien, vel faucibus nisi.
+          .col-lg-5.col-lg-offset-2.col-sm-6
+            %img.img-responsive{:alt => "", :src => "img/ipad.png"}/
+      / /.container
+    / /.content-section-a
+    #services.content-section-b
+      .container
+        .row
+          .col-lg-5.col-lg-offset-1.col-sm-push-6.col-sm-6
+            %h2.section-heading
+              Services
+            %p.lead
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              %a{:href => "#"} Donec et
+              commodo neque. Fusce venenatis, neque vitae ornare consequat, sapien orci vestibulum augue, eu posuere dui urna non dolor. Quisque justo ipsum,
+              %a{:href => "#"} consectetur nec mi
+              hendrerit, semper ultrices lectus. Curabitur id dolor eu neque pellentesque faucibus quis vel tellus.
+              %a{:href => "#"} Etiam in
+              ullamcorper ligula.
+              %a{:href => "#"} Praesent mattis
+              dui in auctor scelerisque. Nulla facilisi. Morbi urna orci, aliquam ut nisi ut, imperdiet volutpat felis. Praesent a porttitor sapien, vel faucibus nisi.
+          .col-lg-5.col-sm-pull-6.col-sm-6
+            %img.img-responsive{:alt => "", :src => "img/doge.png"}/
+      / /.container
+    / /.content-section-b
+    #contact.content-section-a
+      .container
+        .row
+          .col-lg-5.col-sm-6
+            %h2.section-heading Contact Us
+            %form#contactForm.well{:name => "sentMessage", :novalidate => ""}
+              .control-group
+                .controls
+                  %input#name.form-control{"data-validation-required-message" => "Please enter your name", :placeholder => "Full Name", :required => "", :type => "text"}/
+                  %p.help-block
+              .control-group
+                .controls
+                  %input#email.form-control{"data-validation-required-message" => "Please enter your email", :placeholder => "Email", :required => "", :type => "email"}/
+                  %p.help-block
+              .control-group
+                .controls
+                  %textarea#message.form-control{:cols => "100", "data-validation-minlength-message" => "Min 5 characters", "data-validation-required-message" => "Please enter your message", :maxlength => "999", :minlength => "5", :placeholder => "Message", :required => "", :rows => "10", :style => "resize:none"}
+                  %p.help-block
+              #success
+              / For success/fail messages
+              %button.btn.btn-primary.pull-right{:type => "submit"} Send
+              %br/
+              %br/
+          .col-lg-5.col-lg-offset-2.col-sm-6
+            / <img class="img-responsive" src="img/map.gif" alt="">
+      / /.container
+    / /.content-section-a
+    %footer
+      .container
+        .row
+          .col-lg-12
+            %ul.list-inline
+              %li
+                %a{:href => "#home"} Home
+              %li.footer-menu-divider ⋅
+              %li
+                %a{:href => "#about"} About
+              %li.footer-menu-divider ⋅
+              %li
+                %a{:href => "#services"} Services
+              %li.footer-menu-divider ⋅
+              %li
+                %a{:href => "#contact"} Contact
+            %p.copyright.text-muted.small Copyright © Your Company 2014. All Rights Reserved

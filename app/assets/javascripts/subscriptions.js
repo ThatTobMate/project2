@@ -41,8 +41,18 @@ function destroySubscription(){
   })
 }
 
+// function changeTaskStatus(){
+//   $this = $(this)
+//   bookmarkId = $this.data("id");
+//   isBookmarked = $this.is(":clicked")
+//   request("PUT", "/articles_users/new/"+bookmarkId, {articles_user:{is_bookmarked: isBookmarked}}).success(function(){
+//     $this.toggleClass(".btn btn-danger")
+//   })
+// }
+
 
 $(function(){
   $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
+  // $(".btn btn-info bookmark").on("click", changeTaskStatus);
 })

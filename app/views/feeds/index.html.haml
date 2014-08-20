@@ -13,30 +13,7 @@
           = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', feed, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
           = link_to 'Subscribe', new_subscription_path, :class => "btn btn-primary subscribe", :data => {:id => feed.id}
-          = link_to 'Bookmark', new_articles_user_path, :class => "bookmark glyphicon glyphicon-bookmark", :data => {:id => feed.id}
 
-
-%table
-  %tr
-    %th Url
-    %th Title
-    %th Category
-    %th Last updated
-    %th
-    %th
-    %th
-
-  - @feeds.each do |feed|
-    %tr
-      %td= feed.url
-      %td= feed.title
-      %td= feed.category.name
-      %td= feed.last_updated
-      %td= link_to 'Show', feed
-      %td.subscribe= link_to 'subscribe', new_subscription_path, :data => {:id => feed.id}
-      %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
 
 = paginate @feeds_pagination
 
