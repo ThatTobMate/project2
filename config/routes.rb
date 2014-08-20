@@ -1,8 +1,8 @@
 RssFeederApp::Application.routes.draw do
 
-  resources :bookmarks
 
-
+  resources :articles_users
+  
   resources :categories
 
 
@@ -12,6 +12,9 @@ RssFeederApp::Application.routes.draw do
   resources :feeds
 
   resources :subscriptions
+
+  get "/signup", to: "users#new",         as: "signup"
+
 
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }

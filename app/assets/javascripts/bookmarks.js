@@ -19,15 +19,17 @@ function appendNewBookmark(data){
 
 //POST /Bookmarks (corresponds to create)
 function createBookmark(){
+  alert('warning');
   event.preventDefault();
   $this = $(this)
   bookmarkId = $this.data("id");
-  request("POST", "/bookmarks", {
-    bookmark:{
-      feed_id:bookmarkId
+  request("POST", "/articles_users", {
+    article_user:{
+      article_id:bookmarkId
     }
   }).success(function(data){
     $('#entries').val("");
+    debugger;
     alert('warning');
     console.log(data)
     appendNewBookmark(data)
@@ -38,7 +40,7 @@ function createBookmark(){
 function destroyBookmark(){
   $this = $(this)
   bookmarkId = $this.data("id");
-  request("DELETE", "/bookmarks/"+bookmarkId, null).success(function(data){
+  request("DELETE", "/articles_users/"+bookmarkId, null).success(function(data){
       $this.parent().remove()
   })
 }

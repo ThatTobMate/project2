@@ -1,19 +1,17 @@
-class BookmarksController < ApplicationController
+class ArticlesUsersController < ApplicationController
+
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = ArticlesUser.all
+    @article_users = ArticlesUser.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @bookmarks }
-    end
+
   end
 
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
-    @bookmark = ArticlesUser.find(params[:id])
+    @article_user = ArticlesUser.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +23,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks/new.json
   def new
     @bookmark = ArticlesUser.new
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,16 +39,17 @@ class BookmarksController < ApplicationController
   # POST /bookmarks
   # POST /bookmarks.json
   def create
-    @bookmark = ArticlesUser.new(params[:bookmark])
-    binding.pry
+    # @bookmark = ArticlesUser.new(params[:id])
+    @article_user =ArticlesUser.new(user_id:current_user.id,article_id:params[:article_user][:article_id],is_bookmarked:true)
+
 
     respond_to do |format|
-      if @bookmark.save
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
-        format.json { render json: @bookmark, status: :created, location: @bookmark }
+      if @article_user.save
+        format.html { redirect_to @article_user, notice: 'article_user was successfully created.' }
+        format.json { render json: @article_user, status: :created, location: @article_user }
       else
         format.html { render action: "new" }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
+        format.json { render json: @article_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,3 +82,4 @@ class BookmarksController < ApplicationController
     end
   end
 end
+
