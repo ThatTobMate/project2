@@ -4,9 +4,8 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
-    @feeds.each { |a| Article.update_from_feed(a.url,a.id)} 
-    raise
+    @feeds = Feed.page(params[:page]).per(10) 
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,11 +18,6 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @articles = @feed.articles.order()
-
-
-
-
-
 
     respond_to do |format|
       format.html  # show.html.erb
