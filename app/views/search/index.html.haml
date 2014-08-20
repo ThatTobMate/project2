@@ -1,38 +1,41 @@
-  
+
 .div
-  %h1 Feeds
-  - @feeds.each do |feed|
-    %tr
-      %td= feed.url
-      %td= feed.title
-      %td= feed.category.name
-      %td= feed.last_updated
-      %td= link_to 'Show', feed
-      %td.subscribe= link_to 'follow', new_subscription_path
-      %td= link_to 'Destroy', feed, :method => :delete, :data => {:confirm => 'Are you sure?' }
+  -if @feeds.present? 
+    %h1 Feeds
+    - @feeds.each do |feed|
+      %tr
+        %td= feed.url
+        %td= feed.title
+        %td= feed.category.name
+        %td= feed.last_updated
+        %td= link_to 'Show', feed
+        %td.subscribe= link_to 'follow', new_subscription_path
+        %td= link_to 'Destroy', feed, :method => :delete, :data => {:confirm => 'Are you sure?' }
 %br
 
 .div
-  %h1 Articles  
-  - @articles.each do |article|
-    %tr
-      %td= article.title
-      %td= article.summary
-      %td= article.url
-      %td= article.entry_id
-      %td= article.published
-      %td= article.image
-      %td= link_to 'Show', article
-    .follow
-    %td= link_to 'follow', edit_article_path(article)
-    %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  -if @articles.present?
+    %h1 Articles  
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.summary
+        %td= article.url
+        %td= article.entry_id
+        %td= article.published
+        %td= article.image
+        %td= link_to 'Show', article
+      .follow
+      %td= link_to 'follow', edit_article_path(article)
+      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 
 .div
-  %h1 Categories
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :method => :delete, :data => {:confirm => 'Are you sure?' }
+  -if @categories.present?
+    %h1 Categories
+    - @categories.each do |category|
+      %tr
+        %td= category.name
+        %td= link_to 'Show', category
+        %td= link_to 'Edit', edit_category_path(category)
+        %td= link_to 'Destroy', category, :method => :delete, :data => {:confirm => 'Are you sure?' }
