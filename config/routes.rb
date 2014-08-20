@@ -1,5 +1,11 @@
 RssFeederApp::Application.routes.draw do
 
+  resources :bookmarks
+
+
+  resources :categories
+
+
   resources :articles
 
 
