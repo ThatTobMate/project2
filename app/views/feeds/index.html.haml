@@ -14,7 +14,7 @@
     %tr
       %td= feed.url
       %td= feed.title
-      %td= feed.category
+      %td= feed.category.name
       %td= feed.last_updated
       %td= link_to 'Show', feed
       %td.subscribe= link_to 'subscribe', new_subscription_path, :data => {:id => feed.id}

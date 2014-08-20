@@ -4,8 +4,9 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @yoursubscriptions = Subscription.where(user_id: current_user.id)
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.where(user_id: current_user.id)
+    @subscriptions_list = @subscriptions.group_by { |t| t.category.name }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @subscriptions }
@@ -45,10 +46,8 @@ end
   def create
     @subscription = Subscription.new(params[:subscription])
     @subscription.user_id = current_user.id
-
-
-
- 
+    category = @subscription.feed.category_id
+    @subscription.update_attributes(category_id: category)
 
 
     respond_to do |format|
