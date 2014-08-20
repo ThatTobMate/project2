@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-<<<<<<< HEAD
+
   before_filter :authenticate_user!, except: :index
   before_filter :get_subs
   before_filter :set_ransack_form_variables
