@@ -14,9 +14,7 @@
     = f.text_field :title
   .field
     = f.label :category
-    = f.text_field :category
-  .field
-    = f.label :last_updated
-    = f.datetime_select :last_updated
+    = f.collection_select :category_id, Category.all, :id, :name
+
   .actions
     = f.submit 'Save'

@@ -1,11 +1,19 @@
 RssFeederApp::Application.routes.draw do
 
+  resources :bookmarks
+
+
+  resources :categories
+
+
   resources :articles
 
 
   resources :feeds
 
   resources :subscriptions
+
+  get '/search', to: "search#index"
 
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }

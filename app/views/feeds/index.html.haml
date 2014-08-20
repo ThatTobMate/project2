@@ -15,14 +15,14 @@
     %tr
       %td= feed.url
       %td= feed.title
-      %td= feed.category
+      %td= feed.category.name
       %td= feed.last_updated
       %td= link_to 'Show', feed
-      %td.subscribe= link_to 'follow', new_subscription_path
+      %td.subscribe= link_to 'subscribe', new_subscription_path, :data => {:id => feed.id}
       %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= paginate @feeds
+= paginate @feeds_pagination
 
 = link_to 'New Feed', new_feed_path

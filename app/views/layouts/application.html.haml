@@ -37,6 +37,11 @@
         = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter), :class => "btn btn-primary btn-lg active"
 
 
+  .ransack
+    = form_tag('/search', method: :get) do
+      = text_field_tag :q, nil
+
+
 
 
 

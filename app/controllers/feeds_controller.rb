@@ -4,8 +4,9 @@ class FeedsController < ApplicationController
   # GET /feeds
   # GET /feeds.json
   def index
+    @feeds_pagination = Feed.page(params[:page]).per(10) 
 
-    @feeds = Feed.page(params[:page]).per(10) 
+
 
     respond_to do |format|
       format.html # index.html.erb
