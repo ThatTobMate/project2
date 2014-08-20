@@ -43,6 +43,6 @@ function destroySubscription(){
 
 
 $(function(){
-  $('.subscribe a').on('click', createSubscription);
+  $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
 })

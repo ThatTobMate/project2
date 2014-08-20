@@ -13,7 +13,7 @@
           %p= article.summary
           = link_to 'Read', article, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          = link_to 'Bookmark', new_bookmark_path, :class => "btn btn-info", :role => "button", :data => {:id => article.id}
+          = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info", :role => "button", :data => {:id => article.id}
 
 
 %br

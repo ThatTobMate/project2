@@ -23,9 +23,11 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Link
+              = link_to 'feeds', feeds_path
             %li
-              %a{:href => "#"} Link
+              = link_to 'subscriptions', subscriptions_path
+            %li
+              = link_to 'articles', articles_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Dropdown
@@ -57,18 +59,18 @@
                 %span.caret
               %ul.dropdown-menu{:role => "menu"}
                 %li
-                  %a{:href => "#"} Action
+                  = link_to 'feeds', feeds_path
                 %li
-                  %a{:href => "#"} Another action
+                  = link_to 'subscriptions', subscriptions_path
                 %li
-                  %a{:href => "#"} Something else here
+                  = link_to 'articles', articles_path
                 %li.divider
-                %li
-                  %a{:href => "#"} Separated link
         / /.navbar-collapse
       / /.container-fluid
 
-
+#wrapper
+  / Sidebar
+  #sidebar-wrapper
     %p.notice= notice
     %p.alert= alert
     - if user_signed_in?
@@ -79,16 +81,6 @@
       = link_to "Edit profile", edit_user_registration_path
       %br/
       = link_to "Logout", destroy_user_session_path, method: :delete
-      \|
-      = link_to 'feeds', feeds_path
-      \|
-      = link_to 'subscriptions', subscriptions_path
-      \|
-      = link_to 'articles', articles_path
-
-#wrapper
-  / Sidebar
-  #sidebar-wrapper
 
     - @subscriptions_list.each do | category, subs |
       %p
