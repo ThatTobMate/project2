@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20140819182103) do
   create_table "feeds", :force => true do |t|
     t.string   "url"
     t.string   "title"
-    t.string   "category"
     t.datetime "last_updated"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
