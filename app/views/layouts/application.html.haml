@@ -5,6 +5,11 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    / Bootstrap Core CSS
+    %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom CSS
+    %link{:href => "css/simple-sidebar.css", :rel => "stylesheet"}/
+
   %body
 
   %nav.navbar.navbar-default{:role => "navigation"}
@@ -41,9 +46,17 @@
     = form_tag('/search', method: :get) do
       = text_field_tag :q, nil
 
+#wrapper
+  / Sidebar
+  #sidebar-wrapper
 
-
-
+    - @subscriptions_list.each do | category, subs |
+      %p
+        = category
+      %ul
+        - subs.each do | sub |
+          %li
+            = link_to sub.feed.title, feed_path(sub.feed_id)
 
   = yield
 

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2]
 
-  has_many :subscriptions
+  has_many :subscriptions,  dependent: :destroy
   has_many :feeds, through: :subscriptions
   has_many :articles, through: :feeds
   has_many :articles_users

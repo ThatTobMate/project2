@@ -1,7 +1,5 @@
 class RemoveCategoryFromFeeds < ActiveRecord::Migration
-  def up
-  end
-
-  def down
+  def change
+    remove_column :feeds, :category
   end
 end

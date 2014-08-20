@@ -28,8 +28,6 @@ function createSubscription(){
     }
   }).success(function(data){
     $('#entries').val("");
-    alert('warning');
-    console.log(data)
     appendNewSubscription(data)
   })
 }
