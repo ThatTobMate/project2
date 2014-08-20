@@ -44,17 +44,7 @@ function destroySubscription(){
 }
 
 
-// GET /subscriptions (corresponds to index)
-function getSubscriptions(){
-  request("GET", "/subscriptions", null).success(function(data){
-      $.each(data, function(i, subscription){
-        appendNewSubscription(subscription)
-      })
-  })
-}
-
 $(function(){
   $('.subscribe a').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
-  getSubscriptions()
 })
