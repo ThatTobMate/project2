@@ -19,11 +19,10 @@ function appendNewTask(data){
 //POST /subscriptions (corresponds to create)
 function createTask(){
   event.preventDefault();
-  // var userid = 116;
-  var feedid = 24;
+var data = {}
   request("POST", "/subscriptions", {
     subscription:{
-      feed_id: feedid
+      data
       // user_id: userid
     }
   }).success(function(data){
