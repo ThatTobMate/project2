@@ -9,10 +9,13 @@
 
 User.delete_all
 Feed.delete_all
+Category.delete_all
 
+c1 = Category.create!(name: "News")
+c2 = Category.create!(name: "Sport")
 
-f1 = Feed.create!(url:"http://feeds.bbci.co.uk/news/world/rss.xml",title:"bbc",category:"news")
-f2 = Feed.create!(url:"http://www.utah.gov/whatsnew/rss.xml",title:"utahnews",category:"news")
+f1 = Feed.create!(url:"http://feeds.bbci.co.uk/news/world/rss.xml",title:"bbc",category_id: c1.id)
+f2 = Feed.create!(url:"http://www.utah.gov/whatsnew/rss.xml",title:"utahnews",category_id: c1.id)
 
 u1 = User.create!(email:"madeupname@gmail.com",password:"12341234",feed_ids:[f1.id])
 u2 = User.create!(email: "user@user.com", password: "password",feed_ids:[f1.id,f2.id])
