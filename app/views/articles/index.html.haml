@@ -1,5 +1,15 @@
 %h1 Listing articles
-
+.row
+  .col-sm-6.col-md-4
+    .thumbnail
+      %img{:alt => "...", "data-src" => "holder.js/300x300"}/
+      .caption
+        %h3 Thumbnail label
+        - @articles.each do |article|
+          %p= article.title
+          %p= article.summary
+          %a.btn.btn-primary{:href => "#", :role => "button"} Button
+          %a.btn.btn-default{:href => "#", :role => "button"} Button
 
 %table
   %tr
