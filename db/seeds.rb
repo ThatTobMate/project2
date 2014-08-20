@@ -22,5 +22,11 @@ u1 = User.create!(email:"madeupname@gmail.com",password:"12341234",feed_ids:[f1.
 u2 = User.create!(email: "user@user.com", password: "password",feed_ids:[f1.id,f2.id])
 u3 = User.create!(email: "admin@admin.com", password: "password",feed_ids:[f2.id])
 
+Subscription.all.each do |subs|
+  category = subs.feed.category_id
+  subs.category_id = category
+  subs.save
+end
+
 
 
