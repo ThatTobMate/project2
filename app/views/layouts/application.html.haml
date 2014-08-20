@@ -35,9 +35,9 @@
         = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-primary btn-lg active"
         = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter), :class => "btn btn-primary btn-lg active"
 
-  
-  = form_tag('/search', method: :get) do
-    = text_field_tag :q, nil
+  .ransack
+    = form_tag('/search', method: :get) do
+      = text_field_tag :q, nil
 
 
 
