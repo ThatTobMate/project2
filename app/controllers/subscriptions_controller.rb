@@ -48,8 +48,8 @@ end
     @subscription = Subscription.new(params[:subscription])
     @subscription.user_id = current_user.id
     category = @subscription.feed.category_id
-    @subscription.update_attributes(category_id: category)
-
+    @subscription.category_id = category
+    
 
     respond_to do |format|
       if @subscription.save
