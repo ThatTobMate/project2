@@ -47,6 +47,6 @@ function destroyBookmark(){
 
 
 $(function(){
-  $('.bookmark a').on('click', createBookmark);
+  $('.bookmark').on('click', createBookmark);
   $('#todo-list').on('click', ".destroy", destroyBookmark);
 })

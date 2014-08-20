@@ -3,6 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.form-control {
+height: 30px;
+width: 600px;
+}
+
 .feed_images {
-  width:82px
+  width:100px;
+  height: 100px;
+}
+
+.feed_images_default {
+  width:100px;
+  height: 100px;
+  border: solid orange 1px;
+}
+
+.feed_image_default .img-circle {
+  width: 130px;
+  height: 130px;
+}
+
+.welcome {
+  
 }

@@ -1,3 +1,4 @@
+
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -5,6 +6,17 @@
  */
 
 /* Toggle Styles */
+
+
+.navbar-form input {
+  width: 400px;
+  height: 30px;
+}
+
+.col-sm-6.col-md-4 {
+  height: 400px;
+  vertical-align: bottom;
+}
 
 #wrapper {
     padding-left: 0;
@@ -122,3 +134,4 @@
     }
 
 }
+

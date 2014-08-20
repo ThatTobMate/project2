@@ -73,11 +73,11 @@ class ArticlesUsersController < ApplicationController
   # DELETE /bookmarks/1
   # DELETE /bookmarks/1.json
   def destroy
-    @bookmark = ArticlesUser.find(params[:id])
-    @bookmark.destroy
+    @article_user = ArticlesUser.find(params[:id])
+    @article_user.destroy
 
     respond_to do |format|
-      format.html { redirect_to bookmarks_url }
+      format.html { redirect_to articles_users_url }
       format.json { head :no_content }
     end
   end

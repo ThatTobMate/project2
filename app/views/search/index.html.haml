@@ -1,5 +1,5 @@
 
-.div
+.search
   -if @feeds.present? 
     %h1 Feeds
     - @feeds.each do |feed|
@@ -12,25 +12,26 @@
         %td.subscribe= link_to 'follow', new_subscription_path
         %td= link_to 'Destroy', feed, :method => :delete, :data => {:confirm => 'Are you sure?' }
 %br
-
-.div
   -if @articles.present?
     %h1 Articles  
     - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.summary
-        %td= article.url
-        %td= article.entry_id
-        %td= article.published
-        %td= article.image
-        %td= link_to 'Show', article
-      .follow
-      %td= link_to 'follow', edit_article_path(article)
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      .search
+        .col-sm-6.col-md-4
+        .thumbnail
+          -if article.image.present?
+            =image_tag article.image, :class => "feed_images"
+          -else
+            =image_tag "rss_icon.png", :class => "feed_images_default img-circle"
+            .caption
+              %h3= article.title
+              %p= article.summary
+              = link_to 'Read', article, :class => "btn btn-primary", :role => "button"
+              = link_to 'Delete', article, :class => "btn btn-danger",:method => :delete, :data => { :confirm => 'Are you sure?' }
+              = link_to 'Bookmark', new_bookmark_path, :class => "bookmark glyphicon glyphicon-bookmark", :data => {:id => article.id}
+  
 %br
 
-.div
+.search
   -if @categories.present?
     %h1 Categories
     - @categories.each do |category|

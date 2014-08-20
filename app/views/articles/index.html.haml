@@ -1,24 +1,20 @@
-%h1 Listing articles
+%h1 Articles
 
 
-%table
-  %tr
-    %th Title
-    %th Summary
-    %th Url
-    %th
-    %th
-    %th
+- @articles.each do |article|
+  .col-sm-6.col-md-4
+    .thumbnail
+      -if article.image.present?
+        =image_tag article.image, :class => "feed_images"
+      -else
+        =image_tag "rss_icon.png", :class => "feed_images_default"
+        .caption
+          %h3= article.title
+          %p= article.summary
+          = link_to 'Read', article, :class => "btn btn-primary", :role => "button"
+          = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
 
-  - @articles.each do |article|
-
-    %tr
-      %td= article.title
-      %td= article.summary
-      %td= article.url
-      %td= link_to 'Show', article
-      %td.bookmark= link_to 'bookmark', new_articles_user_path, :data => {:id => article.id}
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

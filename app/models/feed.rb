@@ -1,5 +1,5 @@
 class Feed < ActiveRecord::Base
-  attr_accessible :category_id, :last_updated, :title, :url, :user_ids
+  attr_accessible :category_id, :last_updated, :title, :url, :user_ids, :image, :description
 
 
   has_many :subscriptions, dependent: :destroy
