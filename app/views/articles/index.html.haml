@@ -1,7 +1,7 @@
 %h1 Articles
 
 
-- @articles.each do |article|
+- @articles_pagination.each do |article|
   .col-sm-6.col-md-4
     .thumbnail
       -if article.image.present?
@@ -14,9 +14,12 @@
           = link_to 'Read', article, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
           -if article.articles_users.present?
-            = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+            -if article.articles_users.last.is_bookmarked == true
+              = link_to 'remove', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -elsif article.articles_users.last.is_bookmarked == false
+              = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
           -else
-            = link_to 'cookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+            = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
 
 %br
 

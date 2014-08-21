@@ -6,6 +6,7 @@
   %b Title:
   = @article.title
 %p
+
   %b Summary:
   = @article.summary
 %p
@@ -20,7 +21,20 @@
 %p
   %b Image:
   = @article.image
+%p
+  -if @article.articles_users.present?
+
+    -if @article.articles_users[0].is_bookmarked == true
+
+      = link_to 'remove', @article.articles_users, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    -elsif @article.articles_users[0].is_bookmarked == false
+      = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => @article.id}
+  -else
+    = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => @article.id}
 
 = link_to 'Edit', edit_article_path(@article)
 \|
 = link_to 'Back', articles_path
+
+
+
