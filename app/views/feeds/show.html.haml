@@ -10,14 +10,17 @@
     %b Last updated:
     = article.updated_at
     -if article.articles_users.present?
-      -if article.articles_users(is_bookmarked:true)
-        / = link_to 'remove bookmark', article.articles_users.update_attributes(is_bookmarked:false)
+
+      -if article.articles_users[0].is_bookmarked == true
+
         = link_to 'remove', article.articles_users, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-      -elsif article.articles_users(is_bookmarked:false)
+      -elsif article.articles_users[0].is_bookmarked == false
+        puts "this one NOT bookmarked"
+
 
         = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
     -else
-      = link_to 'waah', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+      = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
     %br
 
 
