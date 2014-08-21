@@ -15,9 +15,6 @@
 
         = link_to 'remove', article.articles_users, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
       -elsif article.articles_users[0].is_bookmarked == false
-        puts "this one NOT bookmarked"
-
-
         = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
     -else
       = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
