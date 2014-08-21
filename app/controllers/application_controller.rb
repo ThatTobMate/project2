@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
 
 
   before_filter :authenticate_user!, except: :index
-  before_filter :get_subs
   before_filter :set_ransack_form_variables
+  helper_method :remove_bookmark
+  helper_method :is_read_method
+  before_filter :get_subs
   # GET /subscriptions
   # GET /subscriptions.json
   def get_subs
