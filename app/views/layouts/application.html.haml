@@ -23,7 +23,7 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = link_to 'RSS-Reader |', root_path, :class => 'navbar-brand'
+        = link_to '', root_path, :class => 'navbar-brand logo_side'
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
@@ -65,10 +65,11 @@
         .profile
           %br/
           Welcome #{current_user.name.split[0]}
-          =image_tag current_user.image, :class =>"profile_pic img-circle"
+          =image_tag current_user.image, :class =>"profile_pic"
           %br/
           = link_to "Edit profile", edit_user_registration_path
           = link_to "Logout", destroy_user_session_path, method: :delete
+          %br/
       #subslist
 
     = yield 

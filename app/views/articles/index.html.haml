@@ -11,15 +11,16 @@
         .caption
           %h3= link_to article.title, article.url
           %p= article.summary
-          %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
-          = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          -if article.articles_users.present?
-            -if article.articles_users.last.is_bookmarked == true
-              = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-            -elsif article.articles_users.last.is_bookmarked == false
+          #button_container
+            %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
+            = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -if article.articles_users.present?
+              -if article.articles_users.last.is_bookmarked == true
+                = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+              -elsif article.articles_users.last.is_bookmarked == false
+                = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+            -else
               = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-          -else
-            = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
 
 %br
 #paginator

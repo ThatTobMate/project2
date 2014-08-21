@@ -2,14 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#button_container{
+  width: 100%;
+}
 
+.logo {
+  height:50px;
+  width: 50px;
+  background-image: url('/assets/books-icon-logo.png');
+  background-size: 100%;
+  margin-left: 45%;
+}
+.logo_side {
+  height:50px;
+  width: 50px;
+  background-image: url('/assets/books-icon-logo.png');
+  background-size: 100%;
+  margin-left: 35%;
+}
+
+.modal-content{
+  text-align: center;
+}
+.modal-footer{
+  text-align: center;
+}
 .btn {
   margin-right: 10px;
   width: 29%;
-}
-
-.index_title {
-  color: white;
 }
 
 .article_box{
@@ -59,11 +79,16 @@ width: 600px;
 .navbar.navbar-default {
   background-color: white;
   color: black;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
 }
 
 .profile_pic {
   width: 100px;
   height: 100px;
+  margin-left: 10%
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -77,14 +102,14 @@ width: 600px;
 }
 
 .profile {
-  margin: 0 auto;
-  padding-left: 60px;
   color: black;
-  font-size: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 
 .profile a{
   color: black;
+  margin-right: 10px;
 
 }
