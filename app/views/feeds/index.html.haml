@@ -17,7 +17,13 @@
           %p= feed.description
           = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', feed, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
+
+          -if is_user_subscribed?(feed)
+            -subs_id = get_subscription_id(feed)
+            %a.btn.btn-danger.unsubscribe{:data => {:id => subs_id}} Unsuscribe
+            
+          -else
+            = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
 
 = paginate @feeds_pagination
 
