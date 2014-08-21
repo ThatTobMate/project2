@@ -13,18 +13,19 @@ function request(method, url, data){
 function loadSubscriptions(){
   categories = []
   $.getJSON("/subscriptions", function(data){
-    debugger
     $.each(data, function(i, cat){
-      debugger
       var catrow = $("<p class='category'>"+ i +"</p>");
-      catrow.appendTo('#subslist')
+      catrow.appendTo('#subslist');
+      $.each(cat, function(j, subs){
+        subsrow = $('<li><a href="/feeds/' +
+        subs.feed_id +
+        '">'+
+        subs.feed.title +
+        '</a>'+
+        '</li>');
+        subsrow.appendTo('#subslist');
+      })
     })
-    // '<a href="/feeds/' +
-    // data.feed_id +
-    // '">'+
-    // data.feed_title +
-    // '</a>'+
-    // '</li>')
   })
 }
 // add a <li> to the list #sidebar subscriptions
