@@ -33,13 +33,16 @@
           %button.close{"data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} ×
             %span.sr-only Close
-          %h4= article.title
+          %h4= link_to article.title, article.url
         .modal-body 
           -if article.image.present?
             =image_tag article.image, :class => "feed_images"
           -else
             =image_tag "rss_icon.png", :class => "feed_images_default"
             %p= article.summary
+            %p
+              Published:
+              = article.published
         .modal-footer
           = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
           %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
