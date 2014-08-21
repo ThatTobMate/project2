@@ -40,7 +40,7 @@
               %button.btn.btn-default.search{:type => "submit"} Submit
         %ul.nav.navbar-nav.navbar-right
           %li
-            %a{:href => "#"} Link
+            = link_to 'Add a Feed', new_feed_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Dropdown
@@ -62,6 +62,7 @@
       - if user_signed_in?
         .profile
           %br/
+          %p
           Welcome #{current_user.name.split[0]}
           =image_tag current_user.image, :class =>"profile_pic"
           %br/

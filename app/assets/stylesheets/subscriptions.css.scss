@@ -25,12 +25,24 @@
 #paginator ul li{
   list-style: none;
   display: inline-block;
+  font-size: 20px;
 }
 
 #button_container{
   width: 100%;
 }
 
+.category {
+  font-size: 40px;
+  padding-left: 10px;
+}
+
+#subslist li{
+  font-size: 30px;
+  color: red;
+  padding-left: 10px;
+
+}
 .logo {
   height:50px;
   width: 50px;
@@ -87,19 +99,19 @@ h1 {
 }
 
 .form-control {
-height: 30px;
-width: 600px;
+  height: 30px;
+  width: 600px;
 }
 
 .feed_images {
-  width:100px;
-  height: 100px;
+  width:200px;
+  height: 200px;
   border: solid black;
 }
 
 .feed_images_default {
-  width:100px;
-  height: 100px;
+  width:300px;
+  height: 300px;
   border: solid black;
 }
 
@@ -138,7 +150,10 @@ width: 600px;
   color: black;
   font-size: 20px;
   margin-bottom: 10px;
+  border-bottom: dashed red;
+  padding-left: 10px;
 }
+
 
 
 .profile a{

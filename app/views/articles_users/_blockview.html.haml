@@ -1,0 +1,20 @@
+- @article_users.each do |bookmark|
+  .col-sm-6.col-md-4
+    .thumbnail
+      -if bookmark.article.image.present?
+        =image_tag bookmark.article.image, :class => "feed_images"
+      -else
+        =image_tag "rss_icon.png", :class => "feed_images_default"
+        .caption
+          %h3= link_to bookmark.article.title, bookmark.article.url
+          #button_container
+            %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
+            = link_to 'Delete', bookmark.article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -if bookmark.article.articles_users.present?
+              -if bookmark.article.articles_users.last.is_bookmarked == true
+                = link_to 'Remove', articles_user_path(bookmark.article.articles_users.last), :class => "btn btn-warning", :method => :delete, :data => { :confirm => 'Are you sure?' }
+              -elsif bookmark.article.articles_users.last.is_bookmarked == false
+                = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => bookmark.article.id}
+            -else
+              = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => bookmark.article.id}
+

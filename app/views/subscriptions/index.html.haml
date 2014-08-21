@@ -17,7 +17,7 @@
               
             -if is_user_subscribed?(subscription.feed)
               -subs_id = get_subscription_id(subscription.feed)
-              %a.btn.btn-danger.unsubscribe{:data => {:id => subs_id}} Unsuscribe              
+              %a.btn.btn-warning.unsubscribe{:data => {:id => subs_id}} Unsuscribe              
             -else
               = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id =>subscription.feed.id}
 
