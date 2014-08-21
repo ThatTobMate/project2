@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper_method :remove_bookmark
+  helper_method :is_read_method
 
   before_filter :authenticate_user!, except: :index
   before_filter :get_subs

@@ -10,4 +10,9 @@ module ArticlesUsersHelper
     end
   end
 
+  def is_read_method
+  end
+
+
+
 end
