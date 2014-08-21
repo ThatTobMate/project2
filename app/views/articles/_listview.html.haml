@@ -6,12 +6,12 @@
     -else
       =image_tag "rss_icon.png", :class => "feed_images_default"
     %h3= link_to article.title, article.url
+    %p= article.summary
     %br/
     %p
       Published:
       = article.published 
     #list_button_container
-      %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
       = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
       -if article.articles_users.present?
         -if article.articles_users.last.is_bookmarked == true
