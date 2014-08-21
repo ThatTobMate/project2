@@ -11,7 +11,7 @@
       -if feed.image.present?
         =image_tag feed.image, :class => "feed_images"
       -else
-        =image_tag "rss_icon.png", :class => "feed_images_default img-circle feeds_image"
+        =image_tag "rss_icon.png", :class => "feed_images_default feeds_image"
         .caption
           %h3= feed.title
           %p= feed.description

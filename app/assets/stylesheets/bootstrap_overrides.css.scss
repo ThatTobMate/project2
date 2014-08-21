@@ -13,8 +13,20 @@
     margin-right: 20px;
 }
 
+.landing_page{
+    margin: 0 auto;
+    width: 80%;
+    position: center;
+    margin-top: 15%
+}
+
+.btn-o {
+    height: 20px;
+    width: 50px;
+}
+
 body {
-    background-color: #FFFFF0;
+    background-color:#DC143C;
     font-family: 'Arvo', serif;
 }
 
@@ -72,7 +84,8 @@ main {
     margin-left: -250px;
     overflow-y: auto;
     background-color: white;
-    border-right: solid 15px #FFFFF0;
+    border-right: solid 15px #DC143C;
+    border-radius: 4px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

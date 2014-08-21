@@ -8,6 +8,19 @@
   width: 29%;
 }
 
+.index_title {
+  color: white;
+}
+
+.article_box{
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
 .search {
   width: 15%;
   display: inline-block;
@@ -29,15 +42,16 @@ width: 600px;
 .feed_images {
   width:100px;
   height: 100px;
+  border: solid black;
 }
 
 .feed_images_default {
   width:100px;
   height: 100px;
-  border: solid orange 1px;
+  border: solid black;
 }
 
-.feed_image_default .img-circle {
+.feed_image_default{
   width: 130px;
   height: 130px;
 }

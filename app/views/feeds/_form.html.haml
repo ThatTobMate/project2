@@ -5,16 +5,18 @@
       %ul
         - @feed.errors.full_messages.each do |msg|
           %li= msg
+  .form-group       
+    .field
+      = f.label :url
+      = f.text_field :url, :class => "form-control"
+  .form-group
+    .field
+      = f.label :title
+      = f.text_field :title, :class => "form-control"
+  .form-group
+    .field
+      = f.label :category
+      = f.collection_select :category_id, Category.all, :id, :name
 
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :category
-    = f.collection_select :category_id, Category.all, :id, :name
-
-  .actions
-    = f.submit 'Save'
+    .actions
+      = f.submit 'Save', :class => 'btn btn-default'

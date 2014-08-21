@@ -9,7 +9,7 @@
       -else
         =image_tag "rss_icon.png", :class => "feed_images_default"
         .caption
-          %h3= article.title
+          %h3= link_to article.title, article.url
           %p= article.summary
           %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
           = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -40,8 +40,9 @@
             =image_tag "rss_icon.png", :class => "feed_images_default"
             %p= article.summary
         .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
           = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+          %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+          
 
     
 

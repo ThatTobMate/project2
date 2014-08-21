@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
 
-    @articles_pagination = Article.page(params[:page]).per(10)
+    @articles_pagination = Article.page(params[:page]).per(9)
 
 
     # @articles = Article.where(subscription_id:params[:id])
