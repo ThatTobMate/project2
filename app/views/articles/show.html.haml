@@ -1,26 +1,27 @@
 %p#notice= notice
 
 
+%main  
+  %h3.main
+    %b
+    = @article.title
+  %p
+    %b
+  -if @article.image.present?
+    =image_tag @article.image, :class => "feed_images"
+  -else
+    =image_tag "rss_icon.png", :class => "feed_images_default"
+  %p
+    %b Summary:
+    = @article.summary
+  %p
+    %b Url:
+    %a=@article.url
+  %p
+    %b Entry:
+    =link_to @article.entry_id
+  %p
+    %b Published:
+    = @article.published
 
-%p
-  %b Title:
-  = @article.title
-%p
-  %b Summary:
-  = @article.summary
-%p
-  %b Url:
-  = @article.url
-%p
-  %b Entry:
-  = @article.entry_id
-%p
-  %b Published:
-  = @article.published
-%p
-  %b Image:
-  = @article.image
-
-= link_to 'Edit', edit_article_path(@article)
-\|
-= link_to 'Back', articles_path
+  = link_to 'Back', articles_path, :class => "btn btn-danger"

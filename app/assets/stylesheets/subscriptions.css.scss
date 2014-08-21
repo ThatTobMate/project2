@@ -3,6 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.btn {
+  margin-right: 10px;
+  width: 91px;
+}
+
+h1 {
+  text-align: center;
+}
+
 .form-control {
 height: 30px;
 width: 600px;
@@ -25,14 +34,34 @@ width: 600px;
 }
 
 .navbar.navbar-default {
-  background-color: #008B8B;
-  color: #E0FFFF;
+  background-color: white;
+  color: black;
+}
+
+.profile_pic {
+  width: 100px;
+  height: 100px;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #E0FFFF;
+  color: black;
+  font-family: 'Oleo Script Swash Caps', cursive;
 }
 
 .navbar-default .navbar-brand {
-  color: #E0FFFF;
+  color: black;
+  font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.profile {
+  margin: 0 auto;
+  padding-left: 60px;
+  color: black;
+  font-size: 15px;
+}
+
+
+.profile a{
+  color: black;
+
 }

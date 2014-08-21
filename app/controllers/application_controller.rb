@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
+  before_filter :set_ransack_form_variables
   before_filter :authenticate_user!, except: :index
   before_filter :get_subs
-  before_filter :set_ransack_form_variables
   # GET /subscriptions
   # GET /subscriptions.json
   def get_subs

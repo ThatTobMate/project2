@@ -42,9 +42,11 @@ function destroySubscription(){
 }
 
 // function changeTaskStatus(){
+// //   $(this).text("Unsubscribe").css("color", "white").css("background-color", "red");
+// // }
 //   $this = $(this)
 //   bookmarkId = $this.data("id");
-//   isBookmarked = $this.is(":clicked")
+//   isBookmarked = $this.is(":checked")
 //   request("PUT", "/articles_users/new/"+bookmarkId, {articles_user:{is_bookmarked: isBookmarked}}).success(function(){
 //     $this.toggleClass(".btn btn-danger")
 //   })
@@ -54,5 +56,6 @@ function destroySubscription(){
 $(function(){
   $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
+  // $('.bookmark').on("change", changeTaskStatus);
   // $(".btn btn-info bookmark").on("click", changeTaskStatus);
 })
