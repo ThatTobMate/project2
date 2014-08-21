@@ -1,1 +1,3 @@
-= @bookmark.article.title 
+= link_to @article_user.article.title, @article_user.article.url
+= @article_user.article.summary
+= link_to 'remove', @article_user.article, :class => "btn btn-danger unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }

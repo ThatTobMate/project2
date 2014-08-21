@@ -4,45 +4,60 @@ function request(method, url, data){
     method: method,
     url: url,
     dataType: "json",
-    data: data,
+    data: data
   })
 }
 
-// add a <li> to the list #todo-list
-function appendNewBookmark(data){
-  // $('<li class="'+ (data.done == true ? "completed" : "") + '">'+
-  //     '<input class="toggle" type="checkbox" data-id="'+ data.id +'" '+ (data.done == true ? 'checked="checked"' : "") + '>'+
-  //     '<label>'+ data.title +'</label>'+
-  //     '<button class="destroy" data-id="'+ data.id +'"></button>'+
-  //   '</li>').prependTo("#entries")
-}
+
+
+function loadBookmarks(){
+  $("#bookmarklets").html("Bookmarks");
+
+  $.getJSON("/articles_users", function(data){
+  
+    $.each(data, function(i, cat){
+      var catrow = $('<li><a href="/articles_users/'+ cat.id + '">' + cat.article.title + '</a>' + '</li>');
+      catrow.appendTo('#bookmarklets');
+    });
+  })
+
+  }
 
 //POST /Bookmarks (corresponds to create)
 function createBookmark(){
   event.preventDefault();
   $this = $(this)
-  bookmarkId = $this.data("id");
+  articleId = $this.data("id");
   request("POST", "/articles_users", {
     article_user:{
-      article_id:bookmarkId
+      article_id:articleId
     }
   }).success(function(data){
-    $('#entries').val("");
-    appendNewBookmark(data)
+    console.log(data.id)
+    $this.replaceWith('<a href="/articles_users/' + data.id + '"' + 'class="btn btn-danger unbookmark" data-id="' + data.id + '"  rel="nofollow">remove</a>');
+    loadBookmarks()
   })
 }
 
+
 // DELETE /Bookmarks/:id (corresponds to destroy)
-function destroyBookmark(){
+function changeBookmark(){
+
   $this = $(this)
-  bookmarkId = $this.data("id");
-  request("DELETE", "/articles_users/"+bookmarkId, null).success(function(data){
-      $this.parent().remove()
-  })
+  articleuserId = $this.data("id");
+  request("PUT", "/articles_users/"+articleuserId, { articles_user:
+     {is_bookmarked: false}
+   }).success(function(){
+   $this.replaceWith('<a href="/articles_users/new" class="btn btn-info bookmark" data-id="' + data.id + '" role="button">Bookmark</a>');
+  loadBookmarks()
+})
 }
+
+
 
 
 $(function(){
-  $('.bookmark').on('click', createBookmark);
-  $('#todo-list').on('click', ".destroy", destroyBookmark);
+  $('body').on('click', '.bookmark', createBookmark);
+  $('body').on('click', '.unbookmark', changeBookmark);
+  loadBookmarks();
 })

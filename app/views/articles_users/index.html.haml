@@ -10,6 +10,6 @@
     = link_to bookmark.article.title, bookmark.article.url
     %b Last updated:
     = bookmark.article.updated_at
-    = link_to 'remove', bookmark, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = link_to 'remove', bookmark, :class => "btn btn-danger unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
     %p#notice= notice
     %br

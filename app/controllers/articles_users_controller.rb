@@ -4,14 +4,17 @@ class ArticlesUsersController < ApplicationController
   # GET /bookmarks.json
   def index
     @article_users = ArticlesUser.where(user_id:current_user.id,is_bookmarked:true)
- 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @article_users, include: :article  }
+    end
   end
 
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
     @article_user = ArticlesUser.find(params[:id])
-
+ 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bookmark }
@@ -56,15 +59,21 @@ class ArticlesUsersController < ApplicationController
   # PUT /bookmarks/1
   # PUT /bookmarks/1.json
   def update
-    @bookmark = ArticlesUser.find(params[:id])
+    @article_user = ArticlesUser.find(params[:id])
+    @article_users = ArticlesUser.where(user_id:current_user.id,is_bookmarked:true)
+    
 
     respond_to do |format|
-      if @bookmark.update_attributes(params[:bookmark])
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully updated.' }
-        format.json { head :no_content }
+      if @article_user.update_attributes(is_bookmarked:false)
+        @article_user.save
+
+         format.html { redirect_to articles_users_path, notice: 'article_user was successfully updated.' }
+
+        format.json { render json: @article_users }
       else
+        binding.pry
         format.html { render action: "edit" }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
+        format.json { render json: @article_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,11 +81,13 @@ class ArticlesUsersController < ApplicationController
   # DELETE /bookmarks/1
   # DELETE /bookmarks/1.json
   def destroy
+
     @article_user = ArticlesUser.find(params[:id])
     @article_user.update_attributes(is_bookmarked:false)
     @article_user.save
 
     respond_to do |format|
+
       format.html { redirect_to articles_users_url }
       format.json { head :no_content }
     end
