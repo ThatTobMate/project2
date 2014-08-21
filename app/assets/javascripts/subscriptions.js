@@ -39,7 +39,7 @@ function createSubscription(){
       feed_id: subscriptionId, 
     }
   }).success(function(data){
-    $this.replaceWith('<a href="/subscriptions/new" class="btn unsubscribe btn-danger" data-id="'+
+    $this.replaceWith('<a href="/subscriptions/new" class="btn unsubscribe btn-warning" data-id="'+
       data.id +
       '">Unsubscribe</a>');
     loadSubscriptions();
@@ -58,8 +58,13 @@ function destroySubscription(event){
       loadSubscriptions();
   })
 }
+function showPages() {
+  $(".blockview").toggleClass("hide-elements")
+  $(".listview").toggleClass("hide-elements")
+}
 
 $(function(){
+  $('#show-pages').on('click', showPages);
   $('body').on('click','.subscribe', createSubscription);
   $('body').on('click','.unsubscribe', destroySubscription);
   loadSubscriptions();

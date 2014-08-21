@@ -2,25 +2,24 @@
 
 %p
   - @articles.each do |article|
-    - if article.image.present?
-      =image_tag article.image, :class => "feed_images img-circle"
-    - else
-      =image_tag "rss_icon.png", :class => "feed_images_default img-circle"
-    = link_to article.title, article.url
-    %b Last updated:
-    = article.updated_at
-    -if article.articles_users.present?
-      -if article.articles_users.last.is_bookmarked == true
+    .article_box
+      - if article.image.present?
+        =image_tag article.image, :class => "feed_images"
+      - else
+        =image_tag "rss_icon.png", :class => "feed_images_default"
+      = link_to article.title, article.url
+      %br/ 
+      Last updated:
+      = article.updated_at
+      -if article.articles_users.present?
+        -if article.articles_users.last.is_bookmarked == true
 
-        = link_to 'remove', articles_user_path(article.articles_users.last), :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-      -elsif article.articles_users.last.is_bookmarked == false
+          = link_to 'remove', articles_user_path(article.articles_users.last), :class => "btn btn-warning", :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -elsif article.articles_users.last.is_bookmarked == false
+          = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+      -else
         = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-    -else
-      = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-    %br
-
-
-
+      %br
 
 = link_to 'Edit', edit_feed_path(@feed)
 \|

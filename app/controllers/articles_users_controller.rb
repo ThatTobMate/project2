@@ -2,6 +2,7 @@ class ArticlesUsersController < ApplicationController
 
   # GET /bookmarks
   # GET /bookmarks.json
+  before_filter :authenticate_user!
   def index
     @article_users = ArticlesUser.where(user_id:current_user.id,is_bookmarked:true)
  

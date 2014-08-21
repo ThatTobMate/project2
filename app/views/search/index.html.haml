@@ -3,33 +3,70 @@
   -if @feeds.present? 
     %h1 Feeds
     - @feeds.each do |feed|
-      %tr
-        %td= feed.url
-        %td= feed.title
-        %td= feed.category.name
-        %td= feed.last_updated
-        %td= link_to 'Show', feed
-        %td= link_to 'Subscribe', new_subscription_path, :class => "btn btn-primary subscribe", :data => {:id => feed.id}
-        %td= link_to 'Destroy', feed, :method => :delete, :data => {:confirm => 'Are you sure?' }
+      .col-sm-6.col-md-4
+        .thumbnail.feeds
+          -if feed.image.present?
+            =image_tag feed.image, :class => "feed_images"
+          -else
+            =image_tag "rss_icon.png", :class => "feed_images_default feeds_image"
+            .caption.feeds
+              %h3= feed.title
+              %p= feed.description
+              = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
+              = link_to 'Delete', feed, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+              -if is_user_subscribed?(feed)
+                -subs_id = get_subscription_id(feed)
+                %a.btn.btn-danger.unsubscribe{:data => {:id => subs_id}} Unsuscribe
+                
+              -else
+                = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
 %br
+.search
   -if @articles.present?
     %h1 Articles  
     - @articles.each do |article|
-      .search
-        .col-sm-6.col-md-4
+      .col-sm-6.col-md-4
         .thumbnail
           -if article.image.present?
             =image_tag article.image, :class => "feed_images"
           -else
-            =image_tag "rss_icon.png", :class => "feed_images_default img-circle"
+            =image_tag "rss_icon.png", :class => "feed_images_default"
             .caption
-              %h3= article.title
-              %p= article.summary
-              = link_to 'Read', article, :class => "btn btn-primary", :role => "button"
-              = link_to 'Delete', article, :class => "btn btn-danger",:method => :delete, :data => { :confirm => 'Are you sure?' }
-              = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+              %h3= link_to article.title, article.url
+              #button_container
+                %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
+                = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+                -if article.articles_users.present?
+                  -if article.articles_users.last.is_bookmarked == true
+                    = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-warning", :method => :delete, :data => { :confirm => 'Are you sure?' }
+                  -elsif article.articles_users.last.is_bookmarked == false
+                    = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+                -else
+                  = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
   
 %br
+
+- @articles.each do |article|
+  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+            %span.sr-only Close
+          %h4= link_to article.title, article.url
+        .modal-body 
+          -if article.image.present?
+            =image_tag article.image, :class => "feed_images"
+          -else
+            =image_tag "rss_icon.png", :class => "feed_images_default"
+            %p= article.summary
+            %p
+              Published:
+              = article.published
+        .modal-footer
+          = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
 
 .search
   -if @categories.present?
