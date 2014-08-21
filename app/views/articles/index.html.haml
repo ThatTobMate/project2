@@ -1,48 +1,48 @@
 %h1.index_title Articles
 
-
-- @articles_pagination.each do |article|
-  .col-sm-6.col-md-4
-    .thumbnail
-      -if article.image.present?
-        =image_tag article.image, :class => "feed_images"
-      -else
-        =image_tag "rss_icon.png", :class => "feed_images_default"
-        .caption
-          %h3= link_to article.title, article.url
-          %p= article.summary
-          %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
-          = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          -if article.articles_users.present?
-            -if article.articles_users.last.is_bookmarked == true
-              = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-            -elsif article.articles_users.last.is_bookmarked == false
-              = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-          -else
-            = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-
-%br
-#paginator
-  = paginate @articles_pagination
-- @articles.each do |article|
-  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"data-dismiss" => "modal", :type => "button"}
-            %span{"aria-hidden" => "true"} ×
-            %span.sr-only Close
-          %h4= article.title
-        .modal-body 
-          -if article.image.present?
-            =image_tag article.image, :class => "feed_images"
-          -else
-            =image_tag "rss_icon.png", :class => "feed_images_default"
+.block_view
+  - @articles_pagination.each do |article|
+    .col-sm-6.col-md-4
+      .thumbnail
+        -if article.image.present?
+          =image_tag article.image, :class => "feed_images"
+        -else
+          =image_tag "rss_icon.png", :class => "feed_images_default"
+          .caption
+            %h3= link_to article.title, article.url
             %p= article.summary
-        .modal-footer
-          = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
-          %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
-          
+            %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal"} Read
+            = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -if article.articles_users.present?
+              -if article.articles_users.last.is_bookmarked == true
+                = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+              -elsif article.articles_users.last.is_bookmarked == false
+                = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+            -else
+              = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
 
-    
+  %br
+  #paginator
+    = paginate @articles_pagination
+  - @articles.each do |article|
+    #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{"data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+              %span.sr-only Close
+            %h4= article.title
+          .modal-body 
+            -if article.image.present?
+              =image_tag article.image, :class => "feed_images"
+            -else
+              =image_tag "rss_icon.png", :class => "feed_images_default"
+              %p= article.summary
+          .modal-footer
+            = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
+            %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+            
+.list_view
+      
 
