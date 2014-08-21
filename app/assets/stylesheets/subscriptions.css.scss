@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.btn {
+  margin-right: 10px;
+  width: 29%;
+}
+
+.search {
+  width: 15%;
+  display: inline-block;
+}
+
+.btn-lg{
+  width: 300px;
+}
+
+h1 {
+  text-align: center;
+}
+
 .form-control {
 height: 30px;
 width: 600px;
@@ -24,6 +42,35 @@ width: 600px;
   height: 130px;
 }
 
-.welcome {
-  
+.navbar.navbar-default {
+  background-color: white;
+  color: black;
+}
+
+.profile_pic {
+  width: 100px;
+  height: 100px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: black;
+  font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.navbar-default .navbar-brand {
+  color: black;
+  font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.profile {
+  margin: 0 auto;
+  padding-left: 60px;
+  color: black;
+  font-size: 15px;
+}
+
+
+.profile a{
+  color: black;
+
 }

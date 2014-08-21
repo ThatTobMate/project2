@@ -1,21 +1,15 @@
 %h1 Listing bookmarks
 
-%table
-  %tr
-    %th
-    %th
-    %th
-    %th
 
+%p
   - @article_users.each do |bookmark|
-
-    %tr
-      %td= bookmark.article.title
-      %td= link_to 'Show', bookmark
-      %td= link_to 'Edit', edit_articles_user_path(bookmark)
-      %td= link_to 'Destroy', bookmark, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Bookmark', new_articles_user_path
-
+    - if bookmark.article.image.present?
+      =image_tag bookmark.article.image, :class => "feed_images img-circle"
+    - else
+      =image_tag "rss_icon.png", :class => "feed_images_default img-circle"
+    = link_to bookmark.article.title, bookmark.article.url
+    %b Last updated:
+    = bookmark.article.updated_at
+    = link_to 'remove', bookmark, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %p#notice= notice
+    %br

@@ -6,8 +6,41 @@
  */
 
 /* Toggle Styles */
+.jumbotron{
+    border: dashed black;
+    background-color: white;
+    text-align: center;
+    margin-right: 20px;
+}
 
+body {
+    background-color: #FFFFF0;
+    font-family: 'Arvo', serif;
+}
 
+h1, h2, h3{
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.thumbnail {
+border: none;
+background-color: white;
+text-align: center;
+}
+
+main {
+    font-size: 25px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.main {
+    font-size: 40px;
+}
 .navbar-form input {
   width: 400px;
   height: 30px;
@@ -38,7 +71,8 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #999;
+    background-color: white;
+    border-right: solid 15px #FFFFF0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -78,7 +112,7 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: black;
 }
 
 .sidebar-nav li a:hover {
@@ -108,6 +142,7 @@
 }
 
 @media(min-width:768px) {
+
     #wrapper {
         padding-left: 250px;
     }

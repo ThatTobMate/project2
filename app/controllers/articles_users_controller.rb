@@ -3,9 +3,8 @@ class ArticlesUsersController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @article_users = ArticlesUser.all
-
-
+    @article_users = ArticlesUser.where(user_id:current_user.id,is_bookmarked:true)
+ 
   end
 
   # GET /bookmarks/1
@@ -74,7 +73,8 @@ class ArticlesUsersController < ApplicationController
   # DELETE /bookmarks/1.json
   def destroy
     @article_user = ArticlesUser.find(params[:id])
-    @article_user.destroy
+    @article_user.update_attributes(is_bookmarked:false)
+    @article_user.save
 
     respond_to do |format|
       format.html { redirect_to articles_users_url }

@@ -19,7 +19,6 @@ function appendNewBookmark(data){
 
 //POST /Bookmarks (corresponds to create)
 function createBookmark(){
-  alert('warning');
   event.preventDefault();
   $this = $(this)
   bookmarkId = $this.data("id");
@@ -29,9 +28,6 @@ function createBookmark(){
     }
   }).success(function(data){
     $('#entries').val("");
-    debugger;
-    alert('warning');
-    console.log(data)
     appendNewBookmark(data)
   })
 }

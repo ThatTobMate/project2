@@ -1,4 +1,9 @@
-%h1 Listing feeds
+
+.jumbotron
+  %h1 Welcome to Reader!
+  %p Subscribe to your favourite feeds and keep up to date with the latest news
+
+%h1.index_title Available feeds
 
 - @feeds.each do |feed|
   .col-sm-6.col-md-4
@@ -12,10 +17,9 @@
           %p= feed.description
           = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', feed, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          = link_to 'Subscribe', new_subscription_path, :class => "btn btn-primary subscribe", :data => {:id => feed.id}
-          = link_to 'Bookmark', new_articles_user_path, :class => "bookmark glyphicon glyphicon-bookmark", :data => {:id => feed.id}
-
+          = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
 
 = paginate @feeds_pagination
+
 
 = link_to 'New Feed', new_feed_path

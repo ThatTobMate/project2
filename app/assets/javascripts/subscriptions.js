@@ -48,7 +48,6 @@ function createSubscription(){
   request("POST", "/subscriptions", {
     subscription:{
       feed_id: subscriptionId, 
-//      feed_title: subscriptionTitle
     }
   }).success(function(){
     loadSubscriptions()
@@ -64,9 +63,9 @@ function destroySubscription(){
   })
 }
 
-
 $(function(){
   $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
   loadSubscriptions();
 })
+
