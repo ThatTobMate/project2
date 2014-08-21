@@ -21,23 +21,23 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = link_to 'RSS-Reader', root_path, :class => 'navbar-brand'
+        = link_to 'RSS-Reader |', root_path, :class => 'navbar-brand'
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li.active
-            = link_to 'Feeds', feeds_path
           %li
-            = link_to 'Subscriptions', subscriptions_path
+            = link_to 'Feeds |', feeds_path
           %li
-            = link_to 'Articles', articles_path
+            = link_to 'Subscriptions |', subscriptions_path
           %li
-            = link_to 'Bookmarks', articles_users_path
-        %form.navbar-form.navbar-left{:role => "search"}
+            = link_to 'Articles |', articles_path
+          %li
+            = link_to 'Bookmarks |', articles_users_path
+        %p.navbar-form.navbar-left
           .form-group
-            = form_tag('/search', method: :get) do
+            = form_tag('/search', method: :get, class: "navbar-form navbar-left" ) do
               = text_field_tag :q, nil, :class => ".form-control"
-              %button.btn.btn-default{:type => "submit"} Submit
+              %button.btn.btn-default.search{:type => "submit"} Submit
         %ul.nav.navbar-nav.navbar-right
           %li
             %a{:href => "#"} Link
