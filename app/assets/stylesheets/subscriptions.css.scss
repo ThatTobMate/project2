@@ -2,19 +2,84 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.hide-elements {
+  display: none;
+}
 
+.listview .feed_images_default {
+  width:150px;
+  height: 150px;
+  border: solid black;
+}
+
+.listview h3 {
+  display: inline-block;
+}
+.listview p {
+  display: inline-block;
+}
+
+.listview #button_container{
+  width: 30%;
+}
+#paginator ul li{
+  list-style: none;
+  display: inline-block;
+}
+
+#button_container{
+  width: 100%;
+}
+
+.logo {
+  height:50px;
+  width: 50px;
+  background-image: url('/assets/books-icon-logo.png');
+  background-size: 100%;
+  margin-left: 45%;
+}
+.logo_side {
+  height:50px;
+  width: 50px;
+  background-image: url('/assets/books-icon-logo.png');
+  background-size: 100%;
+  margin-left: 35%;
+}
+
+.modal-content{
+  text-align: center;
+}
+.modal-footer{
+  text-align: center;
+}
 .btn {
   margin-right: 10px;
   width: 29%;
 }
 
+.article_box{
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.test.article_box {
+  width: 500px;
+  vertical-align: top;
+  margin: 5px;
+  display: inline-block;
+}
+
 .search {
-  width: 15%;
+  width: 100%;
   display: inline-block;
 }
 
 .btn-lg{
-  width: 300px;
+  width: 20%;
 }
 
 h1 {
@@ -29,15 +94,16 @@ width: 600px;
 .feed_images {
   width:100px;
   height: 100px;
+  border: solid black;
 }
 
 .feed_images_default {
   width:100px;
   height: 100px;
-  border: solid orange 1px;
+  border: solid black;
 }
 
-.feed_image_default .img-circle {
+.feed_image_default{
   width: 130px;
   height: 130px;
 }
@@ -45,11 +111,17 @@ width: 600px;
 .navbar.navbar-default {
   background-color: white;
   color: black;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
 }
 
 .profile_pic {
   width: 100px;
   height: 100px;
+  margin-left: 10%;
+  border: solid black;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -63,14 +135,14 @@ width: 600px;
 }
 
 .profile {
-  margin: 0 auto;
-  padding-left: 60px;
   color: black;
-  font-size: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 
 .profile a{
   color: black;
+  margin-right: 10px;
 
 }

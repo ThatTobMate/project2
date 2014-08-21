@@ -1,5 +1,6 @@
 
 .jumbotron
+  .logo
   %h1 Welcome to Reader!
   %p Subscribe to your favourite feeds and keep up to date with the latest news
 
@@ -7,19 +8,25 @@
 
 - @feeds.each do |feed|
   .col-sm-6.col-md-4
-    .thumbnail
+    .thumbnail.feeds
       -if feed.image.present?
         =image_tag feed.image, :class => "feed_images"
       -else
-        =image_tag "rss_icon.png", :class => "feed_images_default img-circle feeds_image"
-        .caption
+        =image_tag "rss_icon.png", :class => "feed_images_default feeds_image"
+        .caption.feeds
           %h3= feed.title
           %p= feed.description
           = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
           = link_to 'Delete', feed, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
+
+          -if is_user_subscribed?(feed)
+            -subs_id = get_subscription_id(feed)
+            %a.btn.btn-danger.unsubscribe{:data => {:id => subs_id}} Unsuscribe
+            
+          -else
+            = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => feed.id}
 
 = paginate @feeds_pagination
 
-
+%br/
 = link_to 'New Feed', new_feed_path

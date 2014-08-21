@@ -4,7 +4,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_google_oauth2(request.env['omniauth.auth'], current_user)
     if @user.persisted?
       flash[:notice] = "Welcome to the contacts App! You have successfully logged in with Google!"
-      sign_in_and_redirect @user, event: :authentication
+      sign_in(@user)
+      redirect_to feeds_path, event: :authentication
     else
       session["devise.google_data"] = request.env['omniauth.auth']
       redirect_to new_user_registration_path
@@ -16,7 +17,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       flash[:notice] = "Welcome to the contacts App! You have successfully logged in with Twitter!"
-      sign_in_and_redirect @user, event: :authentication
+      sign_in(@user)
+      redirect_to feeds_path, event: :authentication
     else
       session["devise.twitter_data"] = request.env['omniauth.auth'].except("extra")
       redirect_to new_user_registration_path

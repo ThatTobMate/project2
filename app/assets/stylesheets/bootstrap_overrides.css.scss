@@ -7,15 +7,31 @@
 
 /* Toggle Styles */
 .jumbotron{
-    border: dashed black;
+    border: dashed red;
     background-color: white;
     text-align: center;
     margin-right: 20px;
 }
 
+.caption{
+    margin-top: 30px;
+    height: 15%;
+    overflow: scroll;
+
+}
+
+.landing_page{
+    margin: 0 auto;
+    width: 80%;
+    position: center;
+    margin-top: 10%;
+}
+
 body {
-    background-color: #FFFFF0;
+    background-color:#F5F5F5;
     font-family: 'Arvo', serif;
+    padding-top: 100px;
+
 }
 
 h1, h2, h3{
@@ -26,6 +42,17 @@ h1, h2, h3{
 border: none;
 background-color: white;
 text-align: center;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+
+.btn.search {
+width: 15%;
+display: inline-block;
+}
+
+.caption.feeds{
+    height: 157px;
 }
 
 main {
@@ -47,7 +74,6 @@ main {
 }
 
 .col-sm-6.col-md-4 {
-  height: 400px;
   vertical-align: bottom;
 }
 
@@ -72,7 +98,8 @@ main {
     margin-left: -250px;
     overflow-y: auto;
     background-color: white;
-    border-right: solid 15px #FFFFF0;
+    border-right: solid 15px #F5F5F5;
+    border-radius: 4px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

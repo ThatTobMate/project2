@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
 
 
-  before_filter :authenticate_user!, except: :index
+  before_filter :authenticate_user!, except: [:index, :sign_up]
+
   before_filter :set_ransack_form_variables
 
   helper_method :remove_bookmark

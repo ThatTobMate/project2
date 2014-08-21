@@ -1,15 +1,19 @@
-%h1 Listing bookmarks
+%h1  Your Bookmarks
 
 
 %p
   - @article_users.each do |bookmark|
-    - if bookmark.article.image.present?
-      =image_tag bookmark.article.image, :class => "feed_images img-circle"
-    - else
-      =image_tag "rss_icon.png", :class => "feed_images_default img-circle"
-    = link_to bookmark.article.title, bookmark.article.url
-    %b Last updated:
-    = bookmark.article.updated_at
-    = link_to 'remove', bookmark, :class => "btn btn-danger unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
-    %p#notice= notice
-    %br
+
+    .article_box
+      - if bookmark.article.image.present?
+        =image_tag bookmark.article.image, :class => "feed_images"
+      - else
+        =image_tag "rss_icon.png", :class => "feed_images_default"
+      = link_to bookmark.article.title, bookmark.article.url
+      %br/ 
+      Last updated:
+      = bookmark.article.updated_at
+      = link_to 'remove', bookmark, :class => "btn btn-warning unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %p#notice= notice
+      %br
+
