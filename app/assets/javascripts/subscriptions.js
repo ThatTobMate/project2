@@ -11,7 +11,7 @@ function request(method, url, data){
 // get subscriptions
 
 function loadSubscriptions(){
-  categories = []
+  $("#subslist").html("");
   $.getJSON("/subscriptions", function(data){
     $.each(data, function(i, cat){
       var catrow = $("<p class='category'>"+ i +"</p>");
@@ -30,7 +30,6 @@ function loadSubscriptions(){
 }
 // add a <li> to the list #sidebar subscriptions
 function appendNewSubscription(data){
-  debugger;
   $('<li>' +
   '<a href="/feeds/' +
   data.feed_id +
@@ -52,9 +51,6 @@ function createSubscription(){
 //      feed_title: subscriptionTitle
     }
   }).success(function(){
-
-    debugger 
-    // $('#entries').val("");
     loadSubscriptions()
   })
 }

@@ -1,11 +1,11 @@
 %h1 Listing subscriptions
 
 
-- @subscriptions_list.each do | category, subscriptions |
+- @subscriptions.each do | category, subs |
   %p
     = category
   %ul
-    - subscriptions.each do | subscription |
+    - subs.each do | subscription |
       %li
         = subscription.feed.title
         = link_to 'Show', subscription
