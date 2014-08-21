@@ -67,6 +67,7 @@ function destroySubscription(event){
   $this = $(this)
   subscriptionId = $this.data("id");
   request("DELETE", "/subscriptions/"+subscriptionId, null).success(function(data){
+
       $this.removeClass("unsubscribe");
       $this.removeClass("btn-danger");
       $this.addClass("btn-success");
