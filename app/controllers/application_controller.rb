@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_ransack_form_variables
+
   before_filter :authenticate_user!, except: :index
+  before_filter :set_ransack_form_variables
+  helper_method :remove_bookmark
+  helper_method :is_read_method
   before_filter :get_subs
   # GET /subscriptions
   # GET /subscriptions.json
