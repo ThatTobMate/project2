@@ -8,7 +8,6 @@ function request(method, url, data){
 }
 
 // get subscriptions
-
 function loadSubscriptions(){
   $("#subslist").html("");
   $.getJSON("/subscriptions", function(data){
@@ -29,34 +28,20 @@ function loadSubscriptions(){
     })
   })
 }
-// add a <li> to the list #sidebar subscriptions
-function appendNewSubscription(data){
-  $('<li>' +
-  '<a href="/feeds/' +
-  data.feed_id +
-  '">'+
-  data.feed_title +
-  '</a>'+
-  '</li>').appendTo("#category")
-}
 
 //POST /subscriptions (corresponds to create)
 function createSubscription(){
   event.preventDefault();
   $this = $(this)
   subscriptionId = $this.data("id");
-  // subscriptionTitle = $this.data("name");
   request("POST", "/subscriptions", {
     subscription:{
       feed_id: subscriptionId, 
     }
-  }).success(function(){
-    debugger
-    $this.removeClass("subscribe");
-    $this.removeClass("btn-success");
-    $this.addClass("unsubscribe");
-    $this.addClass("btn-danger");
-    $this.text("Unsubscribe");
+  }).success(function(data){
+    $this.replaceWith('<a href="/subscriptions/new" class="btn unsubscribe btn-danger" data-id="'+
+      data.id +
+      '">Unsubscribe</a>');
     loadSubscriptions();
   })
 }
@@ -67,19 +52,16 @@ function destroySubscription(event){
   $this = $(this)
   subscriptionId = $this.data("id");
   request("DELETE", "/subscriptions/"+subscriptionId, null).success(function(data){
-
-      $this.removeClass("unsubscribe");
-      $this.removeClass("btn-danger");
-      $this.addClass("btn-success");
-      $this.addClass("subscribe");
-      $this.text("Subscribe");
+    $this.replaceWith('<a class="btn btn-success subscribe" data-id="'+
+      data.feed_id +
+      '">Subscribe</a>');
       loadSubscriptions();
   })
 }
 
 $(function(){
-  $('.subscribe').on('click', createSubscription);
-  $('.unsubscribe').on('click', destroySubscription);
+  $('body').on('click','.subscribe', createSubscription);
+  $('body').on('click','.unsubscribe', destroySubscription);
   loadSubscriptions();
 })
 
