@@ -62,10 +62,15 @@ function destroySubscription(){
       $this.parent().remove()
   })
 }
+function showPages() {
+  $(".blockview").toggleClass("hide-elements")
+  $(".listview").toggleClass("hide-elements")
+}
 
 $(function(){
   $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
+  $('#show-pages').on('click', showPages);
   loadSubscriptions();
 })
 

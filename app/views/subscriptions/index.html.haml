@@ -1,16 +1,19 @@
 %h1 Listing subscriptions
 
+- @subscriptions.each do | category, subs|
+  .col-sm-6.col-md-4
+    .thumbnail
+      %p= category
+      - subs.each do | subscription |
+        -if subscription.feed.image.present?
+          =image_tag subscription.feed.image, :class => "feed_images"
+        -else
+          =image_tag "rss_icon.png", :class => "feed_images_default feeds_image"
+          .caption.feeds
+            %h3= subscription.feed.title
+            %p= subscription.feed.description
+            = link_to 'Show', subscription.feed, :class => "btn btn-primary", :role => "button"
+            = link_to 'Delete', subscription, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
+            = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => subscription.feed.id}
 
-- @subscriptions.each do | category, subs |
-  %p
-    = category
-  %ul
-    - subs.each do | subscription |
-      %li
-        = subscription.feed.title
-        = link_to 'Show', subscription
-        = link_to 'Edit', edit_subscription_path(subscription)
-        = link_to 'Destroy', subscription, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-= link_to 'New subscription', new_subscription_path
+= link_to 'New subscription', feeds_path

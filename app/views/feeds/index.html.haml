@@ -1,5 +1,6 @@
 
 .jumbotron
+  .logo
   %h1 Welcome to Reader!
   %p Subscribe to your favourite feeds and keep up to date with the latest news
 
@@ -7,12 +8,12 @@
 
 - @feeds.each do |feed|
   .col-sm-6.col-md-4
-    .thumbnail
+    .thumbnail.feeds
       -if feed.image.present?
         =image_tag feed.image, :class => "feed_images"
       -else
         =image_tag "rss_icon.png", :class => "feed_images_default feeds_image"
-        .caption
+        .caption.feeds
           %h3= feed.title
           %p= feed.description
           = link_to 'Show', feed, :class => "btn btn-primary", :role => "button"
@@ -21,5 +22,5 @@
 
 = paginate @feeds_pagination
 
-
+%br/
 = link_to 'New Feed', new_feed_path
