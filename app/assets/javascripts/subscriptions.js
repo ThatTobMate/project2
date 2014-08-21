@@ -8,6 +8,25 @@ function request(method, url, data){
   })
 }
 
+// get subscriptions
+
+function loadSubscriptions(){
+  categories = []
+  $.getJSON("/subscriptions", function(data){
+    debugger
+    $.each(data, function(i, cat){
+      debugger
+      var catrow = $("<p class='category'>"+ i +"</p>");
+      catrow.appendTo('#subslist')
+    })
+    // '<a href="/feeds/' +
+    // data.feed_id +
+    // '">'+
+    // data.feed_title +
+    // '</a>'+
+    // '</li>')
+  })
+}
 // add a <li> to the list #sidebar subscriptions
 function appendNewSubscription(data){
   debugger;
@@ -28,13 +47,14 @@ function createSubscription(){
   subscriptionTitle = $this.data("name");
   request("POST", "/subscriptions", {
     subscription:{
-      feed_id: subscriptionId, feed_title: subscriptionTitle
+      feed_id: subscriptionId, 
+//      feed_title: subscriptionTitle
     }
-  }).success(function(data){
+  }).success(function(){
 
     debugger 
-    $('#entries').val("");
-    appendNewSubscription(data)
+    // $('#entries').val("");
+    loadSubscriptions()
   })
 }
 
@@ -51,4 +71,5 @@ function destroySubscription(){
 $(function(){
   $('.subscribe').on('click', createSubscription);
   $('#todo-list').on('click', ".destroy", destroySubscription);
+  loadSubscriptions();
 })

@@ -5,12 +5,11 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions.json
   def index
 
-    @subscriptions = Subscription.where(user_id: current_user.id)
-    @subscriptions_list = @subscriptions.group_by { |t| t.category.name }
+    @subscriptions = Subscription.where(user_id: current_user.id).group_by { |t| t.category.name }
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @subscriptions }
+      format.json { render json: @subscriptions, include: :feed   }
     end
   end
 
@@ -91,4 +90,6 @@ end
       format.json { head :no_content }
     end
   end
+
+
 end

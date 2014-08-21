@@ -82,14 +82,14 @@
       = link_to "Edit profile", edit_user_registration_path
       %br/
       = link_to "Logout", destroy_user_session_path, method: :delete
-
-    - @subscriptions_list.each do | category, subs |
-      %p
-        = category
-      %ul#category
-        - subs.each do | sub |
-          %li
-            = link_to sub.feed.title, feed_path(sub.feed_id)
+    #subslist
+    / - @subscriptions_list.each do | category, subs |
+    /   %p
+    /     = category
+    /   %ul#category
+    /     - subs.each do | sub |
+    /       %li
+    /         = link_to sub.feed.title, feed_path(sub.feed_id)
 
   = yield
 
