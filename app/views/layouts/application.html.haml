@@ -36,7 +36,7 @@
         %p.navbar-form.navbar-left
           .form-group
             = form_tag('/search', method: :get, class: "navbar-form navbar-left" ) do
-              = text_field_tag :q, nil, :class => ".form-control"
+              = text_field_tag :q, nil, :class => ".form-control", :placeholder =>"Search Feeds and Articles"
               %button.btn.btn-default.search{:type => "submit"} Submit
         %ul.nav.navbar-nav.navbar-right
           %li

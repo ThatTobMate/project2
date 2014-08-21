@@ -15,3 +15,5 @@
             = link_to 'Show', subscription.feed, :class => "btn btn-primary", :role => "button"
             = link_to 'Delete', subscription, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
             = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id => subscription.feed.id}
+
+          

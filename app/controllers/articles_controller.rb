@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
+  before_filter :authenticate_user!
   def index
 
     @articles_pagination = Article.page(params[:page]).per(9)
