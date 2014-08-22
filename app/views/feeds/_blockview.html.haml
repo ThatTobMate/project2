@@ -12,7 +12,7 @@
           = link_to 'Delete', article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
           -if article.articles_users.present?
             -if article.articles_users.last.is_bookmarked == true
-              = link_to 'Remove', articles_user_path(article.articles_users.last), :class => "btn btn-warning", :method => :delete, :data => { :confirm => 'Are you sure?' }
+              %a{:class => "btn btn-warning unbookmark", :data => {:id => article.articles_users.first.id}} remove
             -elsif article.articles_users.last.is_bookmarked == false
               = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
           -else
