@@ -34,7 +34,7 @@ function createBookmark(event){
     }
   }).success(function(data){
     $this.replaceWith('<a href="#" class="btn btn-warning unbookmark" data-id="' + data.id + '">remove</a>');
-    loadBookmarks()
+
   })
 }
 
@@ -48,7 +48,7 @@ function changeBookmark(){
      {is_bookmarked: false}
    }).success(function(){
    $this.replaceWith('<a href="/articles_users/new" class="btn btn-info bookmark" data-id="' + articleuserId + '" role="button">Bookmark</a>');
-  loadBookmarks()
+
 })
 }
 
