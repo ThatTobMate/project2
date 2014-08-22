@@ -1,12 +1,12 @@
 
-- @articles_pagination.each do |article|
+- @articles.each do |article|
   .article_box
     -if article.image.present?
       =image_tag article.image, :class => "feed_images"
     -else
       =image_tag "rss_icon.png", :class => "feed_images_default"
     %h3= link_to article.title, article.url, :target => "_blank"
-    %p= raw article.summary
+    %p= article.summary
     %br/
     %p
       Published:

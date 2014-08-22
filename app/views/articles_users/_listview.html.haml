@@ -5,7 +5,7 @@
       =image_tag bookmark.article.image, :class => "feed_images"
     -else
       =image_tag "rss_icon.png", :class => "feed_images_default"
-    %h3= link_to bookmark.article.title, bookmark.article.url
+    %h3= link_to bookmark.article.title, bookmark.article.url, :target => "_blank"
     %p= bookmark.article.summary
     %br/
     %p

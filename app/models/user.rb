@@ -4,16 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :omniauthable, omniauth_providers: [:twitter, :google_oauth2]
 
+ attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :image, :feed_ids
+
+
   has_many :subscriptions,  dependent: :destroy
   has_many :feeds, through: :subscriptions
   has_many :articles, through: :feeds
   has_many :articles_users
+
         
 
   # Setup accessible (or protected) attributes for your model
-
- attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :image, :feed_ids
-  # attr_accessible :title, :body
 
 
   def self.find_for_google_oauth2(auth, signed_in_user=nil)
@@ -59,7 +60,6 @@ class User < ActiveRecord::Base
         #user.skip_confirmation!
         
       end
-      
     end
   end
 end

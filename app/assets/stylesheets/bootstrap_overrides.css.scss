@@ -17,7 +17,7 @@
     margin-top: 30px;
     height: 15%;
     overflow: scroll;
-    overflow: ellipsis
+    font-family: 'Arvo', serif;
 }
 
 .landing_page{
@@ -34,7 +34,7 @@ body {
 
 }
 
-h1, h2, h3{
+h1, h2{
     font-family: 'Oleo Script Swash Caps', cursive;
 }
 
@@ -44,7 +44,7 @@ background-color: white;
 text-align: center;
 margin-top: 30px;
 margin-bottom: 30px;
-min-height: 400px;
+min-height: 500px;
 }
 
 .btn.search {
