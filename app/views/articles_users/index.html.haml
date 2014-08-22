@@ -1,19 +1,37 @@
 %h1  Your Bookmarks
 
+%button#show-pages.btn.btn-default Toggle view
 
-%p
-  - @article_users.each do |bookmark|
+.blockview
+  =render 'blockview'
 
-    .article_box
-      - if bookmark.article.image.present?
-        =image_tag bookmark.article.image, :class => "feed_images"
-      - else
-        =image_tag "rss_icon.png", :class => "feed_images_default"
-      = link_to bookmark.article.title, bookmark.article.url
-      %br/ 
-      Last updated:
-      = bookmark.article.updated_at
-      = link_to 'remove', bookmark, :class => "btn btn-warning unbookmark"
-      %p#notice= notice
-      %br
+
+.listview.hide-elements
+  =render 'listview'
+ 
+
+%br
+
+- @article_users.each do |bookmark|
+  %div{id: "myModal#{bookmark.id.to_s}", class: "modal fade", "aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+            %span.sr-only Close
+          %h4= link_to bookmark.article.title, bookmark.article.url, :target => "_blank"
+        .modal-body 
+          -if bookmark.article.image.present?
+            =image_tag bookmark.article.image, :class => "feed_images"
+          -else
+            =image_tag "rss_icon.png", :class => "feed_images_default"
+          %p= bookmark.article.summary
+          %p
+            Published:
+            = bookmark.article.published
+        .modal-footer
+          = link_to 'remove', bookmark, :class => "btn btn-warning unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
+          / %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+
 

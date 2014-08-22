@@ -3,10 +3,8 @@
   .logo
   %h1 Sign in to Reader for the latest news!
   %p 
-    Please sign up or log in.
+    Please log in.
     %br/
   = link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class => "btn btn-danger btn-lg active"
   = link_to "Login with Twitter", user_omniauth_authorize_path(:twitter), :class => "btn btn-primary btn-lg active"
-  = link_to "Log in", new_user_session_path, :role => 'button', :class => 'btn btn-success btn-lg active'
-  = link_to "Sign up", new_user_registration_path, :role => 'button', :class => 'btn btn-warning btn-lg active'
    

@@ -32,9 +32,9 @@ function createBookmark(event){
     article_user:{
       article_id:articleId
     }
+
   }).success(function(){
     $this.replaceWith('<a href="#" class="btn btn-warning unbookmark" data-id="' + articleId + '">remove</a>');
-    console.log(articleId);
     loadBookmarks()
   })
 }

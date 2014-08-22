@@ -6,6 +6,10 @@
   display: none;
 }
 
+.modal-dialog{
+  min-width: 53%
+}
+
 .listview .feed_images_default {
   width:150px;
   height: 150px;
@@ -25,12 +29,24 @@
 #paginator ul li{
   list-style: none;
   display: inline-block;
+  font-size: 20px;
 }
 
 #button_container{
   width: 100%;
 }
 
+.category {
+  font-size: 40px;
+  padding-left: 10px;
+}
+
+#subslist li{
+  font-size: 30px;
+  color: red;
+  padding-left: 10px;
+
+}
 .logo {
   height:50px;
   width: 50px;
@@ -54,7 +70,7 @@
 }
 .btn {
   margin-right: 10px;
-  width: 29%;
+  min-width: 10%;
 }
 
 .article_box{
@@ -79,7 +95,7 @@
 }
 
 .btn-lg{
-  width: 20%;
+  min-width: 20%;
 }
 
 h1 {
@@ -87,19 +103,19 @@ h1 {
 }
 
 .form-control {
-height: 30px;
-width: 600px;
+  height: 30px;
+  width: 600px;
 }
 
 .feed_images {
-  width:100px;
-  height: 100px;
+  width:300px;
+  height: 300px;
   border: solid black;
 }
 
 .feed_images_default {
-  width:100px;
-  height: 100px;
+  width:300px;
+  height: 300px;
   border: solid black;
 }
 
@@ -120,7 +136,7 @@ width: 600px;
 .profile_pic {
   width: 100px;
   height: 100px;
-  margin-left: 10%;
+  margin-left: 1%;
   border: solid black;
 }
 
@@ -138,7 +154,10 @@ width: 600px;
   color: black;
   font-size: 20px;
   margin-bottom: 10px;
+  border-bottom: dashed red;
+  padding-left: 10px;
 }
+
 
 
 .profile a{
