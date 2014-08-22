@@ -13,11 +13,6 @@
             %h3= subscription.feed.title
             %p= subscription.feed.description
             = link_to 'Show', subscription.feed, :class => "btn btn-primary", :role => "button"
-            = link_to 'Delete', subscription, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-              
-            -if is_user_subscribed?(subscription.feed)
-              -subs_id = get_subscription_id(subscription.feed)
-              %a.btn.btn-warning.unsubscribe{:data => {:id => subs_id}} Unsuscribe              
-            -else
-              = link_to 'Subscribe', new_subscription_path, :class => "btn btn-success subscribe", :data => {:id =>subscription.feed.id}
+            = link_to 'Unsubscribe', subscription, :class => "btn btn-warning", :method => :delete
+
 

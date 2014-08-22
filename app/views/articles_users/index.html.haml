@@ -1,6 +1,6 @@
 %h1  Your Bookmarks
 
-%button#show-pages Toggle view
+%button#show-pages.btn.btn-default Toggle view
 
 .blockview
   =render 'blockview'
@@ -30,5 +30,6 @@
             Published:
             = bookmark.article.published
         .modal-footer
-          = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => bookmark.article.id}
+          = link_to 'remove', bookmark, :class => "btn btn-warning unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
           / %a.twitter-share-button{:href => "https://twitter.com/share"} Tweet
+

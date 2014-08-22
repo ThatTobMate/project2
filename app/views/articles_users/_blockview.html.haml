@@ -9,12 +9,5 @@
         %h3= link_to bookmark.article.title, bookmark.article.url, :target => "_blank"
         #button_container
           %button.btn.btn-primary{"data-target" => "#myModal" + bookmark.id.to_s, "data-toggle" => "modal", :data => {:id => bookmark.article.id} } Read
-          = link_to 'Delete', bookmark.article, :class => "btn btn-danger", :method => :delete, :data => { :confirm => 'Are you sure?' }
-          -if bookmark.article.articles_users.present?
-            -if bookmark.article.articles_users.last.is_bookmarked == true
-              = link_to 'Remove', articles_user_path(bookmark.article.articles_users.last), :class => "btn btn-warning", :method => :delete, :data => { :confirm => 'Are you sure?' }
-            -elsif bookmark.article.articles_users.last.is_bookmarked == false
-              = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => bookmark.article.id}
-          -else
-            = link_to 'Bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => bookmark.article.id}
+          = link_to 'remove', bookmark, :class => "btn btn-warning unbookmark", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
