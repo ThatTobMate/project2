@@ -11,7 +11,7 @@ function request(method, url, data){
 
 
 function loadBookmarks(){
-  $("#bookmarklets").html("Bookmarks");
+  $("#bookmarklets").html("");
 
   $.getJSON("/articles_users", function(data){
   
@@ -34,7 +34,7 @@ function createBookmark(event){
     }
   }).success(function(data){
     $this.replaceWith('<a href="#" class="btn btn-warning unbookmark" data-id="' + data.id + '">remove</a>');
-
+    loadBookmarks();
   })
 }
 
