@@ -13,7 +13,7 @@
       = article.updated_at
       -if article.articles_users.present?
         -if article.articles_users.last.is_bookmarked == true
-          = link_to 'remove', articles_user_path(article.articles_users.last), :class => "btn btn-warning"
+          %a{:class => "btn btn-warning unbookmark", :data => {:id => article.articles_users.first.id}} remove
         -elsif article.articles_users.last.is_bookmarked == false
           = link_to 'bookmark', new_articles_user_path, :class => "btn btn-info bookmark", :role => "button", :data => {:id => article.id}
       -else

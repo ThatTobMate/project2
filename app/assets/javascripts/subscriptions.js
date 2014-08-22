@@ -30,7 +30,7 @@ function loadSubscriptions(){
 }
 
 //POST /subscriptions (corresponds to create)
-function createSubscription(){
+function createSubscription(event){
   event.preventDefault();
   $this = $(this)
   subscriptionId = $this.data("id");
@@ -39,10 +39,11 @@ function createSubscription(){
       feed_id: subscriptionId, 
     }
   }).success(function(data){
+    debugger;
     $this.replaceWith('<a href="/subscriptions/new" class="btn unsubscribe btn-warning" data-id="'+
       data.id +
       '">Unsubscribe</a>');
-    loadSubscriptions();
+
   })
 }
 

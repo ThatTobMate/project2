@@ -24,7 +24,7 @@ function loadBookmarks(){
   }
 
 //POST /Bookmarks (corresponds to create)
-function createBookmark(){
+function createBookmark(event){
   event.preventDefault();
   $this = $(this)
   articleId = $this.data("id");
@@ -32,9 +32,9 @@ function createBookmark(){
     article_user:{
       article_id:articleId
     }
-  }).success(function(data){
-    console.log(data.id)
-    $this.replaceWith('<a href="/articles_users/' + data.id + '"' + 'class="btn btn-danger unbookmark" data-id="' + data.id + '"  rel="nofollow">remove</a>');
+  }).success(function(){
+    $this.replaceWith('<a href="#" class="btn btn-warning unbookmark" data-id="' + articleId + '">remove</a>');
+    console.log(articleId);
     loadBookmarks()
   })
 }
@@ -42,13 +42,13 @@ function createBookmark(){
 
 // DELETE /Bookmarks/:id (corresponds to destroy)
 function changeBookmark(){
-
+  console.log('warning')
   $this = $(this)
   articleuserId = $this.data("id");
   request("PUT", "/articles_users/"+articleuserId, { articles_user:
      {is_bookmarked: false}
    }).success(function(){
-   $this.replaceWith('<a href="/articles_users/new" class="btn btn-info bookmark" data-id="' + data.id + '" role="button">Bookmark</a>');
+   $this.replaceWith('<a href="/articles_users/new" class="btn btn-info bookmark" data-id="' + articleuserId + '" role="button">Bookmark</a>');
   loadBookmarks()
 })
 }

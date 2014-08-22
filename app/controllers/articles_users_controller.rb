@@ -68,11 +68,11 @@ class ArticlesUsersController < ApplicationController
       if @article_user.update_attributes(is_bookmarked:false)
         @article_user.save
 
-         format.html { redirect_to articles_users_path, notice: 'article_user was successfully updated.' }
+         format.html { redirect_to feeds_path, notice: 'article_user was successfully updated.' }
 
-        format.json { render json: @article_users }
+        format.json { render json: @feeds }
       else
-        binding.pry
+
         format.html { render action: "edit" }
         format.json { render json: @article_user.errors, status: :unprocessable_entity }
       end
